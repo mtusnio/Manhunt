@@ -1,0 +1,1 @@
+call compile preProcessFileLineNumbers "addStartingEquipment.sqf";

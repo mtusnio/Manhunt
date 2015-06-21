@@ -1,0 +1,178 @@
+
+class RscTitles 
+{ 
+	titles[] = {};
+
+    #include "NameTags.hpp"
+    #include "ManhuntUI.hpp"
+    
+};
+
+#include "ManhuntFunctions.hpp"
+#include "CSSA3\CSSA3_header.hpp"
+
+class Header
+{
+	gameType = TDM; // Game type, see 'class' columns in the table below
+	minPlayers = 4; //min # of players the mission supports
+	maxPlayers = 16; //max # of players the mission supports
+};
+
+class Params
+{
+	class GPS
+	{
+		title = "GPS availability"; // Param name visible in the list
+		values[] = {0,1,2,3}; // Values; must be integers; has to have the same number of elements as 'texts'
+		texts[] = {"None","BluFor","OpFor", "All"}; // Description of each selectable item
+		default = 3; // Default value; must be listed in 'values' array, otherwise 0 is used
+	};
+    
+    class Time
+	{
+		title = "Mission time"; // Param name visible in the list
+		values[] = {0, 1, 2}; // Values; must be integers; has to have the same number of elements as 'texts'
+		texts[] = {"Random","Day","Night"}; // Description of each selectable item
+		default = 0; // Default value; must be listed in 'values' array, otherwise 0 is used
+	};
+    
+    class DroneMarkerSizeInfantry
+	{
+		title = "Infantry drone marker size"; // Param name visible in the list
+		values[] = {75, 150, 225, 275, 325, 375, 425}; // Values; must be integers; has to have the same number of elements as 'texts'
+		default = 325; // Default value; must be listed in 'values' array, otherwise 0 is used
+	};
+    
+    class DroneMarkerSizeVehicle
+	{
+		title = "Vehicle drone marker size"; // Param name visible in the list
+		values[] =  {50, 110, 225, 300, 375 }; // Values; must be integers; has to have the same number of elements as 'texts'
+		default = 110; // Default value; must be listed in 'values' array, otherwise 0 is used
+	};
+    
+    class ObjectivesCount
+	{
+		title = "Objectives to complete before extraction starts (must be equal or lower than available)"; // Param name visible in the list
+		values[] =  {1, 2, 3, 4, 5, 6}; // Values; must be integers; has to have the same number of elements as 'texts'
+		default = 3; // Default value; must be listed in 'values' array, otherwise 0 is used
+	};
+  
+    class AvailableObjectives
+	{
+		title = "Available objectives"; // Param name visible in the list
+		values[] =  {3, 4, 5, 6, 7, 8}; // Values; must be integers; has to have the same number of elements as 'texts'
+		default = 6; // Default value; must be listed in 'values' array, otherwise 0 is used
+	};
+    
+    class MinimumObjectiveRadius
+	{
+		title = "Minimum distance between objectives (high values might make it impossible to have the specified amount of objectives)"; // Param name visible in the list
+		values[] =  {0, 700, 1000, 1250, 1500, 1750, 2000, 2500, 3000}; // Values; must be integers; has to have the same number of elements as 'texts'
+		default = 1250; // Default value; must be listed in 'values' array, otherwise 0 is used
+	};
+    
+    class UseNametags
+	{
+		title = "Nametags"; // Param name visible in the list
+		values[] =  {0, 1, 2}; // Values; must be integers; has to have the same number of elements as 'texts'
+        texts[] = {"Off", "BluFor", "All"};
+		default = 2; // Default value; must be listed in 'values' array, otherwise 0 is used
+	};
+    
+    class IntelRequired
+	{
+		title = "Amount of intelligence OpFor needs at the end to win"; // Param name visible in the list
+		values[] =  {0, 1, 2, 3, 4, 5, 6}; // Values; must be integers; has to have the same number of elements as 'texts'
+		default = 3; // Default value; must be listed in 'values' array, otherwise 0 is used
+	};
+    
+   class StartingAltitude
+	{
+		title = "Starting (absolute) altitude for the parachute drop (0 means spawn on the ground)"; // Param name visible in the list
+		values[] =  {0, 200, 250, 290, 340}; // Values; must be integers; has to have the same number of elements as 'texts'
+		default = 290; // Default value; must be listed in 'values' array, otherwise 0 is used
+	};
+    
+    class Debug
+    {
+        title = "Debug mode (do not enable)";
+        values[] = {0, 1};
+        texts[] = {"Off", "On"};
+        default = 0;
+    };
+    
+    class DisallowTeamswitch
+    {
+        title = "Prevent OpFor from rejoining as BluFor (useful to prevent ghosting/sharing objectives)";
+        values[] = { 0, 1 };
+        texts[] = { "Off", "On" };
+        default = 1;
+    };
+    
+    
+};
+
+class CfgRespawnTemplates
+{
+	// Class used in respawnTemplates entry
+	class CustomSpectator
+	{
+		// Default respawn delay (can be overwitten by description.ext entry of the same name)
+		respawnDelay = 100000000;
+	};
+};
+
+class CfgDebriefing
+{  
+	class OpforWin
+	{
+		title = "Mission Completed";
+		subtitle = "You survived against all odds!";
+		description = "";
+		pictureBackground = "";
+		picture = "b_inf";
+		pictureColor[] = {0.0,0.3,0.6,1};
+	};
+    
+    class NatoLoss
+	{
+		title = "They got away!";
+		subtitle = "Someone is gonna be furious";
+		description = "";
+		pictureBackground = "";
+		pictureColor[] = {0.6,0.1,0.2,1};
+	};
+    
+    class OpforLoss
+	{
+		title = "You failed";
+		subtitle = "You're dead... or worse.";
+		description = "";
+		pictureBackground = "";
+		picture = "b_inf";
+		pictureColor[] = {0.0,0.3,0.6,1};
+	};
+    
+    class NatoWin
+	{
+		title = "They are dead!";
+		subtitle = "";
+		description = "";
+		pictureBackground = "";
+		pictureColor[] = {0.6,0.1,0.2,1};
+	};
+};
+
+author="Mavrick/Revendel";
+OnLoadName = "Manhunt";
+OnLoadMission = "CSAT operatives are deployed onto Stratis to look for intelligence. Will they manage to get their hands on it, or will NATO soldiers intercept them beforehand?";
+
+respawn = BASE;
+respawnOnStart = -1;
+disabledAI = 1;
+respawnDelay = 110;
+respawnTemplatesWest[] = {"Base", "MenuPosition"};
+respawnTemplatesEast[] = {"Base"};
+respawnDialog = 0;
+
+overviewPicture="overview_manhunt.paa";
