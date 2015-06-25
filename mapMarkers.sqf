@@ -123,7 +123,7 @@ while{true} do
     {        
         // Remove occupied respawn vehicles
         {
-            if(count crew _x == 0) then { _respawnVehicles pushBack _x; };
+            if(side player == (_x getVariable["mh_respawnvehicle_side", civilian]) && count crew _x == 0) then { _respawnVehicles pushBack _x; };
         } forEach respawnVehicles;
     };
     
@@ -150,7 +150,7 @@ while{true} do
 
     _i = 0;
     {
-        if(alive _x && isUAVConnected _x) then
+        if(alive _x && isUAVConnected _x && side player == side _x) then
         {
             private ["_markerName"];
             _markerName = format ["uav%1_position", _i];

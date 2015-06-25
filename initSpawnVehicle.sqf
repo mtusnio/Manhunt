@@ -14,6 +14,8 @@ if(isNil "respawnVehicles") then { respawnVehicles = [ ]; };
 respawnVehicles pushBack _unit;
 publicVariable "respawnVehicles";
 
+_unit setVariable ["mh_respawnvehicle_side", west, true];
+
 _unit addEventHandler ["Killed", {
     private ["_unit"];
     _unit = _this select 0;
