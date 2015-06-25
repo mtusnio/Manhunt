@@ -73,7 +73,10 @@ switch(side group player) do
         {
             _pl sideChat (format["Recovering %1 intel pieces.", _intel]);
 
-            [[_unit, _pl, _intel], "Mh_fnc_giveIntelCount", false] call Bis_fnc_mp;
+            if(local _pl) then 
+            {
+                [[_unit, _pl, _intel], "Mh_fnc_giveIntelCount", false] call Bis_fnc_mp;
+            };
             
             private ["_markerName"];
             _markerName = _unit getVariable ["mh_deadIntelMarkerName", ""];
