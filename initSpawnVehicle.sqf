@@ -2,6 +2,9 @@
 
 #define ALLOW_SPAWN_DISTANCE 20
 
+#define MINIMUM_MOVE_DISTANCE 400
+#define MINIMUM_DESPAWN_DISTANCE 1500
+
 private ["_unit", "_side"];
 _unit = _this select 0;
 _side = _this select 1;
@@ -35,7 +38,7 @@ _unit addEventHandler ["Killed", {
     while{alive _unit} do
     {
         private ["_despawn"];
-        _despawn = (_startPos distance (getPos _unit)) >= 400;
+        _despawn = (_startPos distance (getPos _unit)) >= MINIMUM_MOVE_DISTANCE;
         
         if(_despawn) then
         {
