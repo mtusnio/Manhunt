@@ -56,6 +56,30 @@ _unit addEventHandler ["Killed", {
     
 };
 
+// Checks if choppers are above ground to disable the copilot seat for spawns
+if(_unit isKindOf "Helicopter") then
+{
+    [_unit] spawn {
+        private ["_unit"];
+        _unit = _this select 0;
+        
+        while{alive _unit} do
+        {
+            private ["_lock"];
+            _lock = false;
+            if((getPosATL _unit) select 2 > 5) then
+            {
+                _lock = true;
+            };
+            
+            _unit lockTurret [[0], _lock];
+            
+            sleep 2 + random 1.25;
+        };
+    };
+};
+
+
 // Script to check if any players are around/inside the vehicle
 [_unit, _side] spawn {
     private ["_unit", "_side"];
