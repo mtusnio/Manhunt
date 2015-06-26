@@ -4,7 +4,7 @@
 #define TIER2_MULTIPLIER 1.9
 #define TIER3_MULTIPLIER 2.4
 
-#define MARKER_STAYING_TIME 300
+#define MARKER_STAYING_TIME 240
 
 if(isNil "currentMarkers") then { currentMarkers = [ ]; };
 
@@ -99,18 +99,30 @@ if(_radius > 0) then
     _timeMarkerName setMarkerColorLocal "ColorBlack";
     _timeMarkerName setMarkerTextLocal format["%1:%2", date select 3, date select 4];*/
     
-    currentMarkers pushBack [_markerName, _timeMarkerName, serverTime];
+    private["_elem"];
+    _elem = objNull;
     
+    {
+        if(_markerName in _x) exitWith { _elem = _x; };
+    } forEach currentMarkers;
+    currentMarkers = currentMarkers - [_elem];
+    currentMarkers pushBack [_markerName, _timeMarkerName, time];
+    
+    private ["_clearMarkers"];
+    _clearMarkers = [ ];
     {
         private ["_time"];
         _time = _x select 2;
         
-        if(serverTime - _time >= MARKER_STAYING_TIME) then
+        if(time - _time >= MARKER_STAYING_TIME) then
         {
-            deleteMarkerLocal _x select 0;
-            deleteMarkerLocal _x select 1;
+            [_x select 0, "deleteMarkerLocal", west] call Bis_fnc_mp;
+            [_x select 1, "deleteMarkerLocal", west] call Bis_fnc_mp;
+            _clearMarkers pushBack _x;
         };
     } forEach currentMarkers;
+    
+    currentMarkers = currentMarkers - _clearMarkers;
     
     [true, _markerPos];
 }
