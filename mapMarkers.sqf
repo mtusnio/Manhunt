@@ -47,7 +47,7 @@ while{true} do
     _markerNames = [ ];
     
     {
-        if(side player == side _x) then
+        if(side player == side _x && alive _x) then
         {
             if(vehicle _x != _x && _x in _units) then
             {
