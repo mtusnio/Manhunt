@@ -8,7 +8,7 @@ sleep RESCUE_DELAY;
 
 if(isServer) then
 { 
-    [[EXTRACTION_RESPAWN], "setPlayerRespawnTime", west, true] call Bis_fnc_mp;
+    [EXTRACTION_RESPAWN, "setPlayerRespawnTime", west, true] call Bis_fnc_mp;
     
     private["_sendCAS"];
     _sendCAS = {
