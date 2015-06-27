@@ -34,7 +34,7 @@ if(side player == west) then
     _guideString = format [BLUFOR_STRING, requiredIntel, availableObjectives, requiredObjectives];
     
     private ["_removeBlufor"];
-    _removeBlufor = [ "random_cache" ];
+    _removeBlufor = [ "random_cache", "forest_cache" ];
     {
         deleteMarkerLocal _x;
     } forEach _removeBlufor;

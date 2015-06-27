@@ -6011,7 +6011,8 @@ class Mission
 		};
 		class Item156
 		{
-			position[]={5900.0088,28.734961,4569.1841};
+			position[]={5845.8403,84.592758,4810.041};
+			placement=700;
 			id=262;
 			side="EMPTY";
 			vehicle="Box_East_Ammo_F";
@@ -6388,7 +6389,7 @@ class Mission
 		};
 		class Item38
 		{
-			position[]={5899.9844,29.395267,4570.231};
+			position[]={5831.0557,85.926987,4808.666};
 			name="forest_cache";
 			text="Ammo cache";
 			type="mil_marker";
