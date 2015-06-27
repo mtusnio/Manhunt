@@ -40,7 +40,7 @@ sleep INITIAL_WAIT;
 
 sleep  (MIN_FIRST_TRACKING_DELAY + (random RAND_FIRST_TRACKING_DELAY));
 
-diag_log "Drones are online";
+//diag_log "Drones are online";
 
 nextVehicleCheckUnits = [ ];
 
