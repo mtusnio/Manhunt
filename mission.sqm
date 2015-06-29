@@ -4179,7 +4179,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=163;
+		items=170;
 		class Item0
 		{
 			position[]={1885.5095,5.5,5829.4521};
@@ -6176,6 +6176,69 @@ class Mission
 			id=270;
 			side="EMPTY";
 			vehicle="Land_Wreck_Traw_F";
+			skill=0.60000002;
+		};
+		class Item163
+		{
+			position[]={4424.6348,59.765339,3144.3022};
+			azimut=-76.458664;
+			id=271;
+			side="EMPTY";
+			vehicle="Land_Wreck_BMP2_F";
+			skill=0.60000002;
+		};
+		class Item164
+		{
+			position[]={4691.1089,150.53816,3294.7061};
+			azimut=-365.1702;
+			id=272;
+			side="EMPTY";
+			vehicle="Land_Wreck_BMP2_F";
+			skill=0.60000002;
+		};
+		class Item165
+		{
+			position[]={4348.418,83.356529,2871.2925};
+			azimut=14.130955;
+			id=273;
+			side="EMPTY";
+			vehicle="Land_Wreck_T72_hull_F";
+			skill=0.60000002;
+		};
+		class Item166
+		{
+			position[]={4308.7549,94.553558,2931.1763};
+			azimut=-119.03534;
+			id=274;
+			side="EMPTY";
+			vehicle="Land_Wreck_T72_turret_F";
+			skill=0.60000002;
+		};
+		class Item167
+		{
+			position[]={2478.0381,116.61546,4974.8687};
+			azimut=-112.41026;
+			id=275;
+			side="EMPTY";
+			vehicle="Land_Wreck_Plane_Transport_01_F";
+			skill=0.60000002;
+		};
+		class Item168
+		{
+			position[]={4585.3853,29.135136,2947.0615};
+			azimut=-188.05296;
+			id=276;
+			side="EMPTY";
+			vehicle="Land_Wreck_BRDM2_F";
+			skill=0.60000002;
+		};
+		class Item169
+		{
+			position[]={4896.522,115.50229,3430.4385};
+			azimut=203.65579;
+			id=277;
+			side="EMPTY";
+			vehicle="Land_Wreck_Hunter_F";
 			skill=0.60000002;
 		};
 	};
