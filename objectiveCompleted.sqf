@@ -1,3 +1,5 @@
+#define OBJECTIVE_DELAY 300
+
 private["_unit"];
 _unit = (crew (_this select 0)) select 0;
 
@@ -39,6 +41,9 @@ setupFinalObjective = {
 
 if(isServer) then
 {
+    private ["_objectiveScript"];
+    _objectiveScript = [_this, 1, "objectiveFlag.sqf", [""]] call Bis_fnc_param;
+    
     objectivesFinished = objectivesFinished + 1;
     publicVariable "objectivesFinished";
     
@@ -51,5 +56,18 @@ if(isServer) then
         publicVariable "extractionAvailable";
         sleep 3;
         [[], "setupFinalObjective", true, true] call BIS_fnc_MP;
+    };
+
+    if(_objectiveScript != "") then
+    {
+        [_objectiveScript, OBJECTIVE_DELAY] spawn {
+            private ["_script", "_delay"];
+            _script = _this select 0;
+            _delay = _this select 1;
+            
+            sleep _delay;
+            
+            call compile preprocessFileLineNumbers _script;
+        };
     };
 };
