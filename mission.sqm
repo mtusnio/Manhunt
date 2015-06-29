@@ -1069,7 +1069,8 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={2932.2788,3.54,6065.3301};
+					position[]={2913.3115,3.7318969,6069.7236};
+					azimut=90.752617;
 					class args
 					{
 						items=1;
@@ -1794,7 +1795,8 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={2932.0825,3.54,6067.1035};
+					position[]={2914.5229,3.7430286,6069.9336};
+					azimut=90.752617;
 					class args
 					{
 						items=7;
@@ -1977,7 +1979,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={2571.209,82.035515,5503.8521};
+					position[]={2569.8623,81.957001,5504.7612};
 					class args
 					{
 						items=7;
@@ -2044,7 +2046,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={3498.9253,200.27895,4918.7778};
+					position[]={3498.4241,200.25514,4919.1035};
 					class args
 					{
 						items=1;
@@ -2074,7 +2076,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={3499.0903,200.28679,4917.7681};
+					position[]={3498.5891,200.26299,4918.0938};
 					class args
 					{
 						items=7;
@@ -2383,7 +2385,7 @@ class Mission
 						};
 						class Item2
 						{
-							value="Steal docs from the Old Outpost.";
+							value="Steal docs and destroy the Old Outpost";
 							parentCls="ModuleTaskCreate_F";
 							typeName="Title";
 						};
@@ -2626,7 +2628,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={5208.3989,223.08183,5003.5786};
+					position[]={5208.9673,223.0639,5000.2412};
 					class args
 					{
 						items=1;
@@ -2656,7 +2658,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={5208.7339,223.07193,5001.7002};
+					position[]={5208.0801,223.04483,4999.3628};
 					class args
 					{
 						items=7;
@@ -2723,7 +2725,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={4186.979,38.4855,5356.6455};
+					position[]={4186.8086,38.496304,5357.1934};
 					class args
 					{
 						items=1;
@@ -2753,7 +2755,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={4187.812,38.481155,5355.2524};
+					position[]={4187.8164,38.542892,5356.5771};
 					class args
 					{
 						items=7;
@@ -2771,7 +2773,7 @@ class Mission
 						};
 						class Item2
 						{
-							value="Recover data & destroy the crashed Mi-48.";
+							value="Recover data from the crashed Mi-48.";
 							parentCls="ModuleTaskCreate_F";
 							typeName="Title";
 						};
@@ -3347,7 +3349,7 @@ class Mission
 						};
 						class Item2
 						{
-							value="Check out an inconspicuous farmhouse.";
+							value="Blow up the inconspicuous farmhouse.";
 							parentCls="ModuleTaskCreate_F";
 							typeName="Title";
 						};
@@ -5936,7 +5938,7 @@ class Mission
 		};
 		class Item140
 		{
-			position[]={3168.635,122.22067,4334.7461};
+			position[]={3169.6123,122.30499,4334.4517};
 			azimut=-212.39301;
 			id=248;
 			side="EMPTY";
@@ -6338,7 +6340,7 @@ class Mission
 		};
 		class Item11
 		{
-			position[]={3499.0117,200.28305,4917.7568};
+			position[]={3498.5105,200.25925,4918.0825};
 			name="obj_marker_1";
 			type="hd_objective";
 			colorName="ColorRed";
@@ -6347,12 +6349,13 @@ class Mission
 		};
 		class Item12
 		{
-			position[]={2932.0657,3.54,6067.022};
+			position[]={2914.4407,3.7433906,6069.9492};
 			name="obj_marker";
 			type="hd_objective";
 			colorName="ColorRed";
 			a=0.75;
 			b=0.75;
+			angle=90.752617;
 		};
 		class Item13
 		{
@@ -6392,7 +6395,7 @@ class Mission
 		};
 		class Item17
 		{
-			position[]={5207.0259,223.05196,5002.5337};
+			position[]={5207.6611,223.04155,4999.6636};
 			name="obj_marker_6";
 			type="hd_objective";
 			colorName="ColorRed";
@@ -6419,7 +6422,7 @@ class Mission
 		};
 		class Item20
 		{
-			position[]={4346.4326,177.35001,4359.9033};
+			position[]={4346.0068,177.35001,4359.6323};
 			name="obj_marker_9";
 			type="hd_objective";
 			colorName="ColorRed";
@@ -6428,7 +6431,7 @@ class Mission
 		};
 		class Item21
 		{
-			position[]={2571.1355,82.029854,5503.9351};
+			position[]={2569.7888,81.951752,5504.8442};
 			name="obj_marker_10";
 			type="hd_objective";
 			colorName="ColorRed";
@@ -6660,17 +6663,17 @@ class Mission
 		};
 		class Item2
 		{
-			position[]={2931.7026,3.5407434,6067.2969};
-			a=9;
-			b=11;
-			angle=-328.72501;
+			position[]={2913.4148,3.7313037,6069.6514};
+			a=7;
+			b=7;
+			angle=-239.99908;
 			rectangular=1;
 			activationBy="EAST";
 			interruptable=1;
 			age="UNKNOWN";
 			name="objective2";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="0 = [thisList select 0, thisTrigger] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0, thisTrigger, ""objectiveSatchel.sqf""] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6739,7 +6742,7 @@ class Mission
 		};
 		class Item7
 		{
-			position[]={2571.2014,82.039467,5503.731};
+			position[]={2569.8547,81.96035,5504.6401};
 			a=25;
 			b=25;
 			activationBy="EAST";
@@ -6756,7 +6759,7 @@ class Mission
 		};
 		class Item8
 		{
-			position[]={3498.3987,200.25394,4917.7183};
+			position[]={3497.8975,200.22954,4918.0439};
 			a=9;
 			b=11;
 			angle=-75.023499;
@@ -6766,7 +6769,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective5";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="0 = [thisList select 0, thisTrigger] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0, thisTrigger, ""objectiveSatchel.sqf""] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6809,17 +6812,17 @@ class Mission
 		};
 		class Item11
 		{
-			position[]={4345.9063,177.35001,4359.4985};
+			position[]={4345.9839,177.35001,4358.9946};
 			a=12;
 			b=19;
-			angle=-53.902775;
+			angle=125.437;
 			rectangular=1;
 			activationBy="EAST";
 			interruptable=1;
 			age="UNKNOWN";
 			name="objective8";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="0 = [thisList select 0, thisTrigger] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0, thisTrigger, ""objectiveSatchel.sqf""] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6836,7 +6839,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective9";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="0 = [thisList select 0, thisTrigger] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0, thisTrigger, ""objectiveSatchel.sqf""] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6862,8 +6865,8 @@ class Mission
 		};
 		class Item14
 		{
-			position[]={5208.5542,223.06526,5001.1118};
-			a=11;
+			position[]={5207.8335,223.0388,4999.1304};
+			a=10;
 			b=36;
 			angle=245.209;
 			activationBy="EAST";
@@ -6871,7 +6874,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective11";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="0 = [thisList select 0, thisTrigger] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0, thisTrigger, ""objectiveSatchel.sqf""] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6880,7 +6883,7 @@ class Mission
 		};
 		class Item15
 		{
-			position[]={4187.8369,38.511669,5356.0278};
+			position[]={4186.7388,38.467182,5356.5254};
 			a=22;
 			b=22;
 			activationBy="EAST";
@@ -6920,7 +6923,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective13";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="0 = [thisList select 0, thisTrigger] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0, thisTrigger, ""objectiveSatchel.sqf""] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
