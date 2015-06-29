@@ -5101,7 +5101,7 @@ class Mission
 			leader=1;
 			lock="LOCKED";
 			skill=0.60000002;
-			init="null = [this] call compile preProcessFileLineNumbers ""initBluVehicle.sqf"";";
+			init="0 = [this] call compile preProcessFileLineNumbers ""initBluVehicle.sqf"";";
 			syncId=87;
 			synchronizations[]={6};
 		};
@@ -6555,7 +6555,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective1";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="null = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6572,7 +6572,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective3";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="null = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6591,7 +6591,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective2";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="null = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6623,7 +6623,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this && extractionFinished &&  extractionChopper in thisList";
-			expActiv="null = execVM ""missionEnd.sqf"";";
+			expActiv="0 = execVM ""missionEnd.sqf"";";
 			class Effects
 			{
 			};
@@ -6668,7 +6668,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective4";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="null = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6702,7 +6702,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective6";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="null = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6719,7 +6719,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective7";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="null = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6736,7 +6736,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective8";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="null = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6753,7 +6753,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective9";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="null = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6770,7 +6770,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective10";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="null = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6788,7 +6788,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective11";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="null = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6805,7 +6805,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective12";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="null = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6837,7 +6837,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective13";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="null = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6854,7 +6854,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective15";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="null = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6871,7 +6871,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective14";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="null = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6888,7 +6888,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective17";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="null = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6905,7 +6905,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective18";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="null = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
