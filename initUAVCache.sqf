@@ -5,6 +5,8 @@ _cache = _this select 0;
 
 if(isServer) then
 {
+    sleep 1;
+    
     clearMagazineCargoGlobal _cache;   
     clearWeaponCargoGlobal _cache;   
     clearItemCargoGlobal _cache;   
