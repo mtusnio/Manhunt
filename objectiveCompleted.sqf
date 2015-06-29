@@ -1,7 +1,8 @@
 #define OBJECTIVE_DELAY 300
 
-private["_unit"];
+private["_unit", "_trigger"];
 _unit = (crew (_this select 0)) select 0;
+_trigger = _this select 1;
 
 setupFinalObjective = {
     if(!isDedicated) then
@@ -42,7 +43,7 @@ setupFinalObjective = {
 if(isServer) then
 {
     private ["_objectiveScript"];
-    _objectiveScript = [_this, 1, "objectiveFlag.sqf", [""]] call Bis_fnc_param;
+    _objectiveScript = [_this, 2, "objectiveFlag.sqf", [""]] call Bis_fnc_param;
     
     objectivesFinished = objectivesFinished + 1;
     publicVariable "objectivesFinished";
@@ -60,14 +61,8 @@ if(isServer) then
 
     if(_objectiveScript != "") then
     {
-        [_objectiveScript, OBJECTIVE_DELAY] spawn {
-            private ["_script", "_delay"];
-            _script = _this select 0;
-            _delay = _this select 1;
-            
-            sleep _delay;
-            
-            call compile preprocessFileLineNumbers _script;
-        };
+        sleep OBJECTIVE_DELAY;
+    
+        [_trigger] call compile preprocessFileLineNumbers _objectiveScript;
     };
 };
