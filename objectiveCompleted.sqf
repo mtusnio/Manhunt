@@ -43,7 +43,7 @@ if(isServer) then
     publicVariable "objectivesFinished";
     
     [_unit, 1] call Mh_fnc_changeIntelCount;
-    [[_unit, "Recovered another piece of intel."], "sideChat", east] call BIS_fnc_MP;
+    [[_unit, "Recovered a piece of intel."], "sideChat", side _unit] call BIS_fnc_MP;
     
     if(objectivesFinished == requiredObjectives) then
     {
