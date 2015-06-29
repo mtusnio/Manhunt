@@ -8,7 +8,7 @@
 	0: SIDE
     1: (Optional) CODE Only units which pass this condition will be returned
         Condition accepts one parameter (the object to check) plus parameters below
-    2: (Optional) ARRAY Parameters to pass to the condition function, will be available using _this select 2, 3, 4...
+    2: (Optional) ARRAY Parameters to pass to the condition function, will be available using _this select 1, 2, 3, 4...
     
 	Returns:
 	Array
