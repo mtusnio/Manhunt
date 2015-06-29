@@ -109,6 +109,14 @@ class Params
         default = 1;
     };
     
+    class AccTime
+    {
+        title = "Time acceleration";
+        values[] = { 1, 2, 4, 6, 8 };
+        texts[] = { "1x (no acceleration)", "2x (12 hours per day)", "4x (8 hours per day)", "6x (4 hours per day)", "8x (3 hours per day)" };
+        default = 1;
+    };
+    
     
 };
 
