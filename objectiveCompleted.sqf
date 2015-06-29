@@ -61,8 +61,11 @@ if(isServer) then
 
     if(_objectiveScript != "") then
     {
+        private ["_scriptParams"];
+        _scriptParams = [_this, 3, [], [ [] ]] call Bis_fnc_param;
+        
         sleep OBJECTIVE_DELAY;
     
-        [_trigger] call compile preprocessFileLineNumbers _objectiveScript;
+        [_trigger, _scriptParams] call compile preprocessFileLineNumbers _objectiveScript;
     };
 };
