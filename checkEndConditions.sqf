@@ -29,6 +29,11 @@ while { _run } do
         };
     };
     
+    if(_aliveOpfor == 0 && _playingBluFor == 0) then
+    {
+        _run = false;
+    };
+    
     sleep 5;
 };
 
