@@ -1,13 +1,13 @@
 #define RESCUE_DELAY 30
-
 #define EXTRACTION_RESPAWN 45
-
-[East, "HQ"] sideChat "Copy that, extraction on the way";
-[West, "HQ"] sideChat "Enemy extraction started!";
-sleep RESCUE_DELAY;
 
 if(isServer) then
 { 
+    [[[East, "HQ"], "Copy that, extraction on the way"], "sideChat", east] call Bis_fnc_mp;
+    [[[West, "HQ"], "Enemy extraction started!"], "sideChat", west] call Bis_fnc_mp;
+    
+    sleep RESCUE_DELAY;
+
     [EXTRACTION_RESPAWN, "setPlayerRespawnTime", west, true] call Bis_fnc_mp;
     
     private["_sendCAS"];
@@ -37,7 +37,7 @@ if(isServer) then
     _chopperwp = (group ((_chopper select 1) select 0)) addWaypoint [getMarkerPos "extraction_zone", 0];
     _chopperwp setWaypointType "MOVE";
     _chopperwp setWaypointBehaviour "CARELESS";
-    _chopperwp setWaypointStatements ["true", "null = [this, 240] execVM ""extractionLanding.sqf"" "];
+    _chopperwp setWaypointStatements ["true", "0 = [this, 240] execVM ""extractionLanding.sqf"" "];
     _chopperwp setWaypointCompletionRadius 10;
     
     [(_airplane1 select 1) select 0] call _sendCAS;
@@ -45,37 +45,38 @@ if(isServer) then
     
     _chopper = [[getMarkerPos _airplane1Marker select 0, getMarkerPos _airplane1Marker select 1], 300, "O_Heli_Attack_02_F", East] call Bis_fnc_spawnvehicle;
     [(_chopper select 1) select 0] call _sendCAS;
+    
+    extractionChopper allowDamage false;
+
+    {
+        _x allowDamage false;
+    } forEach crew extractionChopper;
+
+
+    extractionChopper addEventHandler ["GetIn", {
+        private ["_crew", "_veh"];
+        _veh = _this select 0;
+        _crew = _this select 2;
+        [[_crew, false], "allowDamage", _crew] call Bis_fnc_mp;
+
+        if(isPlayer _crew) then
+        {
+            [[_crew,  format ["Entered the chopper with %1 intel, there's now %2 inside", [_crew] call Mh_fnc_getIntelCount, [_veh] call Mh_fnc_getIntelCount]], "sideChat", side _crew] call Bis_fnc_mp;
+        };
+    }];
+
+    extractionChopper addEventHandler ["GetOut", {
+        private ["_crew", "_veh"];
+        _veh = _this select 0;
+        _crew = _this select 2;
+        [[_crew, true], "allowDamage", _crew] call Bis_fnc_mp;
+        
+        if(isPlayer _crew) then
+        {
+             [[_crew,  format ["Exited the chopper, there's now %1 intel inside", [_veh] call Mh_fnc_getIntelCount]], "sideChat", side _crew] call Bis_fnc_mp;
+        };
+    }];
+
 };
 
 
-waitUntil { not isNil "extractionChopper" };
-extractionChopper allowDamage false;
-
-{
-    _x allowDamage false;
-} forEach crew extractionChopper;
-
-
-extractionChopper addEventHandler ["GetIn", {
-    private ["_crew", "_veh"];
-    _veh = _this select 0;
-    _crew = _this select 2;
-    _crew allowDamage false;
-    
-    if(isPlayer _crew) then
-    {
-        _crew sideChat format ["Entered the chopper with %1 intel, there's now %2 inside", [_crew] call Mh_fnc_getIntelCount, [_veh] call Mh_fnc_getIntelCount];
-    };
-}];
-
-extractionChopper addEventHandler ["GetOut", {
-    private ["_crew", "_veh"];
-    _veh = _this select 0;
-    _crew = _this select 2;
-    _crew allowDamage true;
-    
-    if(isPlayer _crew) then
-    {
-        _crew sideChat format ["Exited the chopper, there's now %1 intel inside", [_veh] call Mh_fnc_getIntelCount];
-    };
-}];
