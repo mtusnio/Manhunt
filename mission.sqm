@@ -1796,7 +1796,7 @@ class Mission
 				class Item0
 				{
 					position[]={2914.5229,3.7430286,6069.9336};
-					azimut=90.752617;
+					azimut=90.752602;
 					class args
 					{
 						items=7;
@@ -1814,7 +1814,7 @@ class Mission
 						};
 						class Item2
 						{
-							value="Clean our old hideout.";
+							value="Destroy our old hideout.";
 							parentCls="ModuleTaskCreate_F";
 							typeName="Title";
 						};
@@ -2482,7 +2482,7 @@ class Mission
 						};
 						class Item2
 						{
-							value="Check Kill Farm out.";
+							value="Search & blow up local governor's house.";
 							parentCls="ModuleTaskCreate_F";
 							typeName="Title";
 						};
@@ -6664,16 +6664,16 @@ class Mission
 		class Item2
 		{
 			position[]={2913.4148,3.7313037,6069.6514};
-			a=7;
-			b=7;
-			angle=-239.99908;
+			a=6;
+			b=6;
+			angle=-239.99899;
 			rectangular=1;
 			activationBy="EAST";
 			interruptable=1;
 			age="UNKNOWN";
 			name="objective2";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="0 = [thisList select 0, thisTrigger, ""objectiveSatchel.sqf""] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0, thisTrigger, ""objectiveSatchel.sqf"", [2]] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6698,9 +6698,9 @@ class Mission
 		class Item4
 		{
 			position[]={4643.9717,0.22061412,1591.7749};
-			a=550;
-			b=550;
-			angle=496.45282;
+			a=850;
+			b=850;
+			angle=496.453;
 			activationBy="EAST";
 			interruptable=1;
 			age="UNKNOWN";
@@ -6769,7 +6769,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective5";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="0 = [thisList select 0, thisTrigger, ""objectiveSatchel.sqf""] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0, thisTrigger, ""objectiveSatchel.sqf"", [2]] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6839,7 +6839,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective9";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="0 = [thisList select 0, thisTrigger, ""objectiveSatchel.sqf""] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0, thisTrigger, ""objectiveSatchel.sqf"" ,[2]] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
@@ -6874,7 +6874,7 @@ class Mission
 			age="UNKNOWN";
 			name="objective11";
 			expCond="this && thisTrigger in currentObjectives;";
-			expActiv="0 = [thisList select 0, thisTrigger, ""objectiveSatchel.sqf""] execVM ""objectiveCompleted.sqf"";";
+			expActiv="0 = [thisList select 0, thisTrigger, ""objectiveSatchel.sqf"", [2]] execVM ""objectiveCompleted.sqf"";";
 			class Effects
 			{
 			};
