@@ -2,6 +2,9 @@
 
 #define ALLOW_SPAWN_DISTANCE 20
 
+#define MINIMUM_MOVE_DISTANCE 400
+#define MINIMUM_DESPAWN_DISTANCE 1500
+
 private ["_unit", "_side"];
 _unit = _this select 0;
 _side = _this select 1;
@@ -10,6 +13,8 @@ if(isNil "respawnVehicles") then { respawnVehicles = [ ]; };
 
 respawnVehicles pushBack _unit;
 publicVariable "respawnVehicles";
+
+_unit setVariable ["mh_respawnvehicle_side", west, true];
 
 _unit addEventHandler ["Killed", {
     private ["_unit"];
@@ -35,7 +40,7 @@ _unit addEventHandler ["Killed", {
     while{alive _unit} do
     {
         private ["_despawn"];
-        _despawn = (_startPos distance (getPos _unit)) >= 400;
+        _despawn = (_startPos distance (getPos _unit)) >= MINIMUM_MOVE_DISTANCE;
         
         if(_despawn) then
         {
@@ -50,6 +55,30 @@ _unit addEventHandler ["Killed", {
     };
     
 };
+
+// Checks if choppers are above ground to disable the copilot seat for spawns
+if(_unit isKindOf "Helicopter") then
+{
+    [_unit] spawn {
+        private ["_unit"];
+        _unit = _this select 0;
+        
+        while{alive _unit} do
+        {
+            private ["_lock"];
+            _lock = false;
+            if((getPosATL _unit) select 2 > 5) then
+            {
+                _lock = true;
+            };
+            
+            _unit lockTurret [[0], _lock];
+            
+            sleep 2 + random 1.25;
+        };
+    };
+};
+
 
 // Script to check if any players are around/inside the vehicle
 [_unit, _side] spawn {

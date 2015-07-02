@@ -18,6 +18,8 @@ if(isServer) then
         case 2: { timeSkip = 12 + random 3; };
     };
     publicVariable "timeSkip";
+    
+    setAccTime acceleratedTime;
 };
 
 waitUntil { not isNil "timeSkip" };

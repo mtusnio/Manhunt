@@ -10,7 +10,7 @@
 #define MIN_FIRST_TRACKING_DELAY 10
 #define RAND_FIRST_TRACKING_DELAY 10
 
-#define MAX_CHANCE 101
+#define MAX_CHANCE 100
 
 #define INFANTRY_CHANCE 20
 
@@ -25,6 +25,11 @@
 #define VEHICLE_SPEED_CHANCE_MULT 0.475
 
 #define VEHICLE_ROAD_CHANCE 30
+
+#define SPOT_COUNT_VAR "mh_drone_spotcount"
+#define SPOT_POSITION_VAR "mh_drone_spotposition"
+#define SPOT_DISTANCE 130
+
 /* ******************** End defines ***************** */
 
 
@@ -40,7 +45,7 @@ sleep INITIAL_WAIT;
 
 sleep  (MIN_FIRST_TRACKING_DELAY + (random RAND_FIRST_TRACKING_DELAY));
 
-diag_log "Drones are online";
+//diag_log "Drones are online";
 
 nextVehicleCheckUnits = [ ];
 
@@ -62,19 +67,37 @@ nextVehicleCheckUnits = [ ];
         private ["_chance"];
         _chance = INFANTRY_CHANCE;
         {
+            private ["_spotCount", "_spotPosition"];
+            _spotCount = _x getVariable [SPOT_COUNT_VAR, 0];
+            _spotPosition = _x getVariable [SPOT_POSITION_VAR, [0,0,0]];
+            
             private ["_rand"];
-            _rand = floor (random MAX_CHANCE);
+            _rand = floor random (MAX_CHANCE + 1);
             //diag_log format ["Checking %1 with random %2 and chance %3", name _x, _rand, _chance];
             
             private["_trackerRet"];
-            _trackerRet = [_x, detectionRadius, _rand, _chance] call _trackerMarker;
+            _trackerRet = [_x, detectionRadius / (2 ^ _spotCount), _rand, _chance + _spotCount * (MAX_CHANCE - _chance)] call _trackerMarker;
             if(_trackerRet select 0) then
             {
                 _detected = true;
                 private["_pos"];
                 _pos = _trackerRet select 1;
                 [[[West, "HQ"], format ["Hostile on foot spotted around grid %1", mapGridPosition _pos]], "sideChat", west] call Bis_fnc_mp;
+
+                if(_spotCount == 0 || (_spotPosition distance (getPos _x)) <= SPOT_DISTANCE) then
+                {
+                    _x setVariable [SPOT_POSITION_VAR, getPos _x];
+                    _x setVariable [SPOT_COUNT_VAR, _spotCount + 1];
+                }
+                else
+                {
+                    _x setVariable [SPOT_COUNT_VAR, 0];
+                };
                 sleep 2;
+            }
+            else
+            {
+                _x setVariable [SPOT_COUNT_VAR, 0];
             };
         } forEach _units;
         

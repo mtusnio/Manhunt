@@ -1,5 +1,8 @@
-private["_unit"];
+#define OBJECTIVE_DELAY 300
+
+private["_unit", "_trigger"];
 _unit = (crew (_this select 0)) select 0;
+_trigger = _this select 1;
 
 setupFinalObjective = {
     if(!isDedicated) then
@@ -39,11 +42,14 @@ setupFinalObjective = {
 
 if(isServer) then
 {
+    private ["_objectiveScript"];
+    _objectiveScript = [_this, 2, "objectiveFlag.sqf", [""]] call Bis_fnc_param;
+    
     objectivesFinished = objectivesFinished + 1;
     publicVariable "objectivesFinished";
     
     [_unit, 1] call Mh_fnc_changeIntelCount;
-    [[_unit, "Recovered another piece of intel."], "sideChat", east] call BIS_fnc_MP;
+    [[_unit, "Recovered a piece of intel."], "sideChat", side _unit] call BIS_fnc_MP;
     
     if(objectivesFinished == requiredObjectives) then
     {
@@ -51,5 +57,15 @@ if(isServer) then
         publicVariable "extractionAvailable";
         sleep 3;
         [[], "setupFinalObjective", true, true] call BIS_fnc_MP;
+    };
+
+    if(_objectiveScript != "") then
+    {
+        private ["_scriptParams"];
+        _scriptParams = [_this, 3, [], [ [] ]] call Bis_fnc_param;
+        
+        sleep OBJECTIVE_DELAY;
+    
+        [_trigger, _scriptParams] call compile preprocessFileLineNumbers _objectiveScript;
     };
 };

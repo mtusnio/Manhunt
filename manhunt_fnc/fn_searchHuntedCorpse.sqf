@@ -53,7 +53,7 @@ switch(side group player) do
                         _markerName setMarkerPosLocal _x;
                         _markerName setMarkerSizeLocal [1, 1];
                         _markerName setMarkerShapeLocal "ICON";
-                        _markerName setMarkerTypeLocal "mil_dot";
+                        _markerName setMarkerTypeLocal "o_unknown";
                         _markerName setMarkerColorLocal "ColorEAST";
                         _markerName setMarkerTextLocal format["%1:%2", _deathTime select 3, _deathTime select 4];
                         _i = _i + 1;
@@ -73,7 +73,10 @@ switch(side group player) do
         {
             _pl sideChat (format["Recovering %1 intel pieces.", _intel]);
 
-            [[_unit, _pl, _intel], "Mh_fnc_giveIntelCount", false] call Bis_fnc_mp;
+            if(local _pl) then 
+            {
+                [[_unit, _pl, _intel], "Mh_fnc_giveIntelCount", false] call Bis_fnc_mp;
+            };
             
             private ["_markerName"];
             _markerName = _unit getVariable ["mh_deadIntelMarkerName", ""];

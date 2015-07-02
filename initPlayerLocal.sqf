@@ -11,9 +11,10 @@ if(isMultiplayer) then
 
 if(side player == west) then
 {
-    [] execVM "mapMarkers.sqf";
     [] execVM "zlt_fastrope.sqf";
 };
+
+[] execVM "mapMarkers.sqf";
 
 sleep 1;
 
