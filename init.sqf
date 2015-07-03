@@ -19,7 +19,7 @@ if(isServer) then
     };
     publicVariable "timeSkip";
     
-    setAccTime acceleratedTime;
+    setTimeMultiplier acceleratedTime;
 };
 
 waitUntil { not isNil "timeSkip" };
