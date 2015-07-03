@@ -13,3 +13,5 @@ disallowTeamswitch = paramsArray select 11;
 acceleratedTime = paramsArray select 12;
 dynamicObjectives = 0;
 maxUavs = 1;
+
+if(!isMultiplayer) then { debugMode = 1; };
