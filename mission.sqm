@@ -2482,7 +2482,7 @@ class Mission
 						};
 						class Item2
 						{
-							value="Search & blow up local governor's house.";
+							value="Find hidden intel and destroy any traces.";
 							parentCls="ModuleTaskCreate_F";
 							typeName="Title";
 						};
