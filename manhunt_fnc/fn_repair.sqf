@@ -52,9 +52,9 @@
         
         _target setDamage 0;
         
-        if(fuel _target == 0) then
+        if(fuel _target < 0.1) then
         {
-            _target setFuel 0.1;
+            [[_target, 0.1], "setFuel", _target] call Bis_fnc_mp;
         };
         hint "Done";
     };
