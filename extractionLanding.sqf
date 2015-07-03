@@ -45,7 +45,7 @@ if(isServer) then
     
     while{_landingTime > 0} do
     {
-        if(_landingTime > FULL_AWAITING_TIME && ([_chopper] call Mh_fnc_getIntelCount == requiredIntel)) then
+        if(_landingTime > FULL_AWAITING_TIME && ([_chopper] call Mh_fnc_getIntelCount >= requiredIntel)) then
         {
             _landingTime = 0;
             
