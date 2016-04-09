@@ -49,6 +49,7 @@ mh_drone_assembled = {
 
     if(typeOf _weapon == "B_UAV_01_F") then
     {
+		_weapon disableTIEquipment true;
         [[_unit, "Deploying a UAV"], "sideChat", west] call Bis_fnc_mp;
         
         _weapon addEventHandler ["Killed", {

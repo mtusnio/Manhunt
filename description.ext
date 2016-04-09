@@ -86,12 +86,13 @@ class Params
 		default = 3; // Default value; must be listed in 'values' array, otherwise 0 is used
 	};
     
-   class StartingAltitude
-	{
-		title = "Starting (absolute) altitude for the parachute drop (0 means spawn on the ground)"; // Param name visible in the list
-		values[] =  {0, 200, 250, 290, 340}; // Values; must be integers; has to have the same number of elements as 'texts'
-		default = 290; // Default value; must be listed in 'values' array, otherwise 0 is used
-	};
+    class initialWeatherParam 
+    {
+          title = "Starting Weather";
+          values[] = {0,1,2,3,4};
+          texts[] = {"Clear","Overcast","Rain","Fog","Random"};
+          default = 0;
+    };
     
     class Debug
     {

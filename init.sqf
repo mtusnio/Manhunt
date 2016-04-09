@@ -22,6 +22,8 @@ if(isServer) then
     setTimeMultiplier acceleratedTime;
 };
 
+execVM "randomWeather2.sqf";
+
 waitUntil { not isNil "timeSkip" };
 skipTime timeSkip;
 

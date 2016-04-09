@@ -47,7 +47,7 @@ while{true} do
     _markerNames = [ ];
     
     {
-        if(side player == side _x && alive _x) then
+        if(alive _x) then
         {
             if(vehicle _x != _x && _x in _units) then
             {
@@ -172,7 +172,7 @@ while{true} do
     // Clear unused markers
     {
         deleteMarkerLocal _x;
-    } forEach (_markerNames - _oldMarkerNames);
+    } forEach (_oldMarkerNames - _markerNames);
     
     sleep 2;
 };
