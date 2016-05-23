@@ -22,7 +22,9 @@ addMissionEventHandler ["HandleDisconnect", {
     private ["_unit"];
     _unit = _this select 0;
     
-    if(side _unit == east) then
+    private ["_guid"];
+    _guid = getPlayerUID _x;
+    if(side _unit == east && (_guid in opforGuids)) then
     {
         _unit setDamage 1;
         [[_unit], "Mh_fnc_resolveHuntedCorpse", true, true] call Bis_fnc_MP;

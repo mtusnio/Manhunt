@@ -5,7 +5,7 @@
 
 #define SETTINGS_STRING "Objectives needed for extraction: %1<br/>Amount of objectives available at start: %2<br/>Intel required to win: %3"
 
-#define CREDITS_STRING "<font size=""16"">Made by</font><br/><br/>Michał ""Mavrick"" Tuśnio, Revendel on BIStudio forums.<br/><br/><font size=""16"">Special thanks to</font><br/><br/>DMK Gman for OpFor loadouts, gameplay videos.<br/>ATi for gameplay videos<br/>ATi, DMK Gman, GuðniM, Ingi, Snake, Wezzlok for testing and suggestions.<br/><br/><font size=""16"">Scripts</font><br/><br/>Nametags by JTS <br/>Fast roping script by Zealot<br/>Cyro's Spectator Script for ArmA 3"
+#define CREDITS_STRING "<font size=""16"">Made by</font><br/><br/>Michał ""Mavrick"" Tuśnio, Revendel on BIStudio forums.<br/><br/><font size=""16"">Special thanks to</font><br/><br/>DMK Gman for OpFor loadouts, gameplay videos.<br/>ATi for gameplay videos<br/>ATi, DMK Gman, GuðniM, Ingi, Snake, Wezzlok for testing and suggestions.<br/><br/><font size=""16"">Scripts</font><br/><br/>Nametags by JTS <br/>Fast roping script by Zealot<br/>Cyro's Spectator Script for ArmA 3<br/>Random weather script by Meatball"
 
 #define CHANGELOG_STRING "V1 Release"
 

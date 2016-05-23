@@ -8,6 +8,9 @@
 #define STR_FAST_ROPE "Fast Rope"
 #define STR_CUT_ROPES "Cut Ropes"
 
+#define CUT_ROPES_CONDITION 'driver vehicle player == player && not zlt_mutexAction and count ((vehicle player) getvariable ["zlt_ropes", []]) != 0'
+#define FAST_ROPE_CONDITION 'not zlt_mutexAction and count ((vehicle player) getvariable ["zlt_ropes", []]) != 0 and ((not isNull driver vehicle player && player != driver vehicle player) || (vehicle player getCargoIndex player != -1))'
+
 
 if (isdedicated) exitwith {};
 waituntil {player == player};
@@ -15,7 +18,7 @@ waituntil {player == player};
 zlt_rope_ropes = [];
 zlt_mutexAction = false;
 
-zlt_rope_helis = ["O_Heli_Light_02_unarmed_F","O_Heli_Light_02_F","B_Heli_Transport_01_F","B_Heli_Transport_01_camo_F","O_Heli_Attack_02_F","O_Heli_Attack_02_black_F","I_Heli_Transport_02_F","B_Heli_Light_01_F"];
+zlt_rope_helis = ["O_Heli_Light_02_unarmed_F","O_Heli_Light_02_F","B_Heli_Transport_01_F","B_Heli_Transport_01_camo_F","O_Heli_Attack_02_F","O_Heli_Attack_02_black_F","I_Heli_Transport_02_F","B_Heli_Light_01_F","I_Heli_light_03_unarmed_F"];
 zlt_rope_helidata = 
 [
 	[
@@ -42,6 +45,11 @@ zlt_rope_helidata =
 		["B_Heli_Light_01_F"],
 		[0.6,0.5,-25.9],
 		[-0.8,0.5,-25.9]
+	],
+	[
+		["I_Heli_light_03_unarmed_F"],
+		[0.7,2.75,-25.9],
+		[-0.9,2.75,-25.9]
 	]
 ];
 
@@ -135,7 +143,7 @@ zlt_fnc_fastrope = {
 	if (player == leader group player) then {
 		[vehicle player, units group player] call zlt_fnc_fastropeaiunits;
 	};
-	player call zlt_fnc_fastropeUnit;
+	[player, "zlt_fnc_fastropeUnit", false] call Bis_fnc_mp;
 	zlt_mutexAction = false;
 };
 
@@ -153,8 +161,9 @@ zlt_fnc_fastropeUnit = {
 	_zdelta = 7 / 10  ;
 	
 	_zc = _zmax;
+    moveOut _unit;
 	//_unit action ["eject", _heli];
-    _unit leaveVehicle _heli;
+    //_unit leaveVehicle _heli;
 	//_unit switchmove "gunner_standup01";	
 	_unit setpos [(getpos _unit select 0), (getpos _unit select 1), 0 max ((getpos _unit select 2) - 4)];
     [[_unit, "gunner_standup01"], "switchMove", true] call Bis_fnc_mp;
@@ -200,12 +209,12 @@ if(side group player == west) then
     player createDiaryRecord [STR_SCRIPTS_NAME,[STR_SCRIPT_NAME, STR_HELP]];
 
     player addAction["<t color='#ffff00'>"+STR_TOSS_ROPES+"</t>", zlt_fnc_createropes, [], -1, false, false, '','[] call zlt_fnc_ropes_cond'];
-    player addAction["<t color='#ff0000'>"+STR_CUT_ROPES+"</t>", zlt_fnc_removeropes, [], -1, false, false, '','driver vehicle player == player && not zlt_mutexAction and count ((vehicle player) getvariable ["zlt_ropes", []]) != 0'];
-    player addAction["<t color='#00ff00'>"+STR_FAST_ROPE+"</t>", zlt_fnc_fastrope, [], 15, false, false, '','not zlt_mutexAction and count ((vehicle player) getvariable ["zlt_ropes", []]) != 0 and ((vehicle player) getCargoIndex player != -1)'];
+    player addAction["<t color='#ff0000'>"+STR_CUT_ROPES+"</t>", zlt_fnc_removeropes, [], -1, false, false, '', CUT_ROPES_CONDITION];
+    player addAction["<t color='#00ff00'>"+STR_FAST_ROPE+"</t>", zlt_fnc_fastrope, [], 15, false, false, '', FAST_ROPE_CONDITION];
 
     player addEventHandler ["Respawn", {
         player addAction["<t color='#ffff00'>"+STR_TOSS_ROPES+"</t>", zlt_fnc_createropes, [], -1, false, false, '','[] call zlt_fnc_ropes_cond'];
-        player addAction["<t color='#ff0000'>"+STR_CUT_ROPES+"</t>", zlt_fnc_removeropes, [], -1, false, false, '','not zlt_mutexAction and count ((vehicle player) getvariable ["zlt_ropes", []]) != 0'];
-        player addAction["<t color='#00ff00'>"+STR_FAST_ROPE+"</t>", zlt_fnc_fastrope, [], 15, false, false, '','not zlt_mutexAction and count ((vehicle player) getvariable ["zlt_ropes", []]) != 0 and player != driver vehicle player'];
+        player addAction["<t color='#ff0000'>"+STR_CUT_ROPES+"</t>", zlt_fnc_removeropes, [], -1, false, false, '', CUT_ROPES_CONDITION];
+        player addAction["<t color='#00ff00'>"+STR_FAST_ROPE+"</t>", zlt_fnc_fastrope, [], 15, false, false, '', FAST_ROPE_CONDITION];
     }];
 };

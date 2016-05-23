@@ -45,5 +45,13 @@ if(side player == east) then
 if(debugMode == 1) then
 {
     setPlayerRespawnTime 5;
+    ["debugTeleport", "onMapSingleClick", {
+        if(_alt) then
+        {
+            player setPos _pos;
+            systemChat "Teleporting";
+            true;
+        };
+    }] call BIS_fnc_addStackedEventHandler;
 };
 

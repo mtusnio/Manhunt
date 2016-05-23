@@ -11,8 +11,23 @@
 	Returns:
 	Nothing
 */
-    
+
 [_this select 0, _this select 1] spawn {
+    private ["_calculateTime"];
+    _calculateTime = {
+        private ["_vehicle"];
+        _vehicle = _this select 0;
+        
+        private ["_time"];
+        _time = 40;
+        if(_vehicle isKindOf "Helicopter") then
+        {
+            _time = 60;
+        };
+        
+        _time;
+    };
+
     private["_repairParts"];
     _repairParts = ["HitLFWheel", "HitLBWheel", "HitLMWheel", "HitLF2Wheel", "HitRFWheel", "HitRBWheel", "HitRMWheel",
     "HitRF2Wheel", "HitEngine", "HitLTrack","HitRTrack", "HitFuel", "HitAvionics", "HitVRotor", "HitHRotor"];
@@ -24,11 +39,7 @@
     _caller playActionNow "medicStart";
 
     private["_repairTime", "_fullRepairTime"];
-    _fullRepairTime = 50;
-    if(["heli", typeOf _target] call BIS_fnc_inString) then
-    {
-        _fullRepairTime = 90;
-    };
+    _fullRepairTime = [_target] call _calculateTime;
 
     _repairTime = _fullRepairTime;
        
@@ -52,9 +63,9 @@
         
         _target setDamage 0;
         
-        if(fuel _target == 0) then
+        if(fuel _target < 0.1) then
         {
-            _target setFuel 0.1;
+            [[_target, 0.1], "setFuel", _target] call Bis_fnc_mp;
         };
         hint "Done";
     };

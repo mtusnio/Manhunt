@@ -20,22 +20,24 @@ setupFinalObjective = {
             } forEach _allTasks;
         };*/
         
-        _task = player createSimpleTask ["task_extraction"];
+        
         if(side group player == east) then
         {
+            _task = player createSimpleTask ["task_extraction"];
             _task setSimpleTaskDescription [format["Reach the LZ and extract (%1 intel needed)", requiredIntel],"Extraction",""];
-            _task setSimpleTaskDestination (getMarkerPos "extraction_zone");        
+            _task setSimpleTaskDestination (getMarkerPos "extraction_zone"); 
+            ["TaskAssigned",["","Extraction"]] call BIS_fnc_showNotification;
         }
         else
         {
-            sleep 15;
+            /*sleep 15;
             if(side group player == west) then
             {
                 _task setSimpleTaskDescription ["Reach the LZ and prevent extraction","Stop the extraction",""];
                 _task setSimpleTaskDestination (getMarkerPos "extraction_zone");
-            };
+            };*/
         };
-        ["TaskAssigned",["","Extraction"]] call BIS_fnc_showNotification;
+        //["TaskAssigned",["","Extraction"]] call BIS_fnc_showNotification;
     };
 };
 
