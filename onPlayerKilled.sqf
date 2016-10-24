@@ -20,3 +20,8 @@ if(side group _unit == west) then
         publicVariable "availableUavs";
     };
 };
+
+if(_unit == player && side group player == east) then
+{
+    ["Initialize", [player, [east], false, false, false, false, false, false, false, false]] call BIS_fnc_EGSpectator;
+};
