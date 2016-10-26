@@ -9,7 +9,6 @@ class RscTitles
 };
 
 #include "ManhuntFunctions.hpp"
-#include "CSSA3\CSSA3_header.hpp"
 
 class Header
 {
