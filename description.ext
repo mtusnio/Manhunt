@@ -13,7 +13,7 @@ class RscTitles
 class Header
 {
 	gameType = TDM; // Game type, see 'class' columns in the table below
-	minPlayers = 4; //min # of players the mission supports
+	minPlayers = 3; //min # of players the mission supports
 	maxPlayers = 16; //max # of players the mission supports
 };
 
