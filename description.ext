@@ -179,7 +179,7 @@ respawn = BASE;
 respawnOnStart = -1;
 disabledAI = 1;
 respawnDelay = 110;
-respawnTemplatesWest[] = {"Base", "MenuPosition"};
+respawnTemplatesWest[] = {"Base", "MenuPosition", "Spectator"};
 respawnTemplatesEast[] = {"Base"};
 respawnDialog = 0;
 
