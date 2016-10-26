@@ -40,6 +40,10 @@ if(side player == east) then
                 }, [], 1, false, true, "", "alive _target && _this distance _target <= 3 && ([_this] call Mh_fnc_getIntelCount > 0);"]; 
         };
     } forEach (if (isMultiplayer) then {playableUnits} else {switchableUnits});
+}
+else
+{
+    setPlayerRespawnTime respawnTime;
 };
 
 if(debugMode == 1) then

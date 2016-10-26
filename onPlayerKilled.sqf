@@ -20,3 +20,17 @@ if(side group _unit == west) then
         publicVariable "availableUavs";
     };
 };
+
+if(_unit == player && side group player == east) then
+{
+    private _aliveCount = count ([east, { private["_pl"]; _pl = _this select 0; alive _pl; }] call Mh_fnc_getSideUnits);
+
+    if(_aliveCount == 0) then
+    {
+        ["Initialize", [player, [east], false, true, false, false, false, false, false, false]] call BIS_fnc_EGSpectator;
+    }
+    else
+    {
+        ["Initialize", [player, [east], false, false, false, false, false, false, false, false]] call BIS_fnc_EGSpectator;
+    };
+};

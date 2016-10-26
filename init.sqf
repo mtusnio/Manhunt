@@ -44,17 +44,3 @@ if(side group player == east) then
 {
     _init = true;
 };
-
-[_init] execVM "CSSA3\CSSA3_init.sqf";
-
-//Only players can be spectated. True/False
-CSSA3_onlySpectatePlayers = true;
-
-//Perspective modes that can be used.
-CSSA3_allowedModes = ["firstPerson"];
-
-//Sides that BLUFOR players can spectate.
-CSSA3_bluforSpectateable = [];
-
-//Sides that OPFOR players can spectate.
-CSSA3_opforSpectateable = [opfor];

@@ -11,6 +11,7 @@ requiredIntel = paramsArray select 8;
 debugMode = paramsArray select 10;
 disallowTeamswitch = paramsArray select 11;
 acceleratedTime = paramsArray select 12;
+respawnTime = paramsArray select 13;
 dynamicObjectives = 0;
 maxUavs = 1;
 
