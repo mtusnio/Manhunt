@@ -94,6 +94,7 @@ else
     player createDiaryRecord ["Guide", ["Overview", format[OPFOR_OVERVIEW, requiredObjectives, availableObjectives, requiredIntel]]];  
 };
 
-player createDiaryRecord ["Diary", ["Situation", format[SETTINGS_STRING, requiredObjectives, availableObjectives, requiredIntel]]];
-player createDiaryRecord ["Diary", ["Changelog", CHANGELOG_STRING]];
 player createDiaryRecord ["Diary", ["Credits", CREDITS_STRING]];
+player createDiaryRecord ["Diary", ["Changelog", CHANGELOG_STRING]];
+player createDiaryRecord ["Diary", ["Situation", format[SETTINGS_STRING, requiredObjectives, availableObjectives, requiredIntel]]];
+
