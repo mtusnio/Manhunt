@@ -37,7 +37,7 @@ if(isServer) then
     _chopperwp = (group ((_chopper select 1) select 0)) addWaypoint [getMarkerPos "extraction_zone", 0];
     _chopperwp setWaypointType "MOVE";
     _chopperwp setWaypointBehaviour "CARELESS";
-    _chopperwp setWaypointStatements ["true", "0 = [this, 240] execVM ""extractionLanding.sqf"" "];
+    _chopperwp setWaypointStatements ["true", "0 = [this, 300] execVM ""extractionLanding.sqf"" "];
     _chopperwp setWaypointCompletionRadius 10;
     
     [(_airplane1 select 1) select 0] call _sendCAS;
