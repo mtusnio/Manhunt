@@ -29,7 +29,7 @@
 
 #define CREDITS_STRING "<font size=""16"">Made by</font><br/><br/>Michał ""Mavrick"" Tuśnio, Revendel on BIStudio forums.<br/><br/><font size=""16"">Special thanks to</font><br/><br/>DMK Gman for OpFor loadouts, gameplay videos.<br/>ATi for gameplay videos<br/>ATi, DMK Gman, GuðniM, Ingi, Snake, Wezzlok for testing and suggestions.<br/><br/><font size=""16"">Scripts</font><br/><br/>Nametags by JTS <br/>Fast roping script by Zealot<br/>Random weather script by Meatball"
 
-#define CHANGELOG_STRING "<font size=""16"">Version 2</font><br/><br/>- Removed a custom spectator mode in favour of BI's<br/>- Blufor respawn time now 105s, can be changed in parameters<br/>- Updated briefing to reflect some recent changes <br/>- Fix wrongly displayed minimum player count<br/><br/><font size=""16"">Version 1</font><br/><br/>Initial release"
+#define CHANGELOG_STRING "<font size=""16"">Version 3</font><br/><br/>- Increased extraction time from 4 minutes to 5 minutes<br/>- Changed the warning time before the chopper leaves from 30 seconds before extraction to 60 seconds<br/>- BlueFor units in the selection menu have been reordered to Pilots->Air Station Mike->Airfield paratroopers<br/>- Restructured the in-game guide for BluFor and OpFor<br/><br/><font size=""16"">Version 2</font><br/><br/>- Removed a custom spectator mode in favour of BI's<br/>- Blufor respawn time now 105s, can be changed in parameters<br/>- Updated briefing to reflect some recent changes <br/>- Fix wrongly displayed minimum player count<br/><br/><font size=""16"">Version 1</font><br/><br/>Initial release"
 
 // Handle markers
 if(side group player == west) then
