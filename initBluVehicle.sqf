@@ -23,6 +23,7 @@ if(_unit isKindOf "Ship") then
 {
     _unit removeWeaponTurret ["GMG_40mm", [0]]; 
     _unit removeMagazinesTurret ["200Rnd_40mm_G_belt", [0]];
+    _unit disableTIEquipment true;
 };
 
 if(_unit isKindOf "Helicopter") then
