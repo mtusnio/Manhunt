@@ -23,6 +23,7 @@ if(_unit isKindOf "Ship") then
 {
     _unit removeWeaponTurret ["GMG_40mm", [0]]; 
     _unit removeMagazinesTurret ["200Rnd_40mm_G_belt", [0]];
+    _unit disableTIEquipment true;
 };
 
 if(_unit isKindOf "Helicopter") then
@@ -30,7 +31,7 @@ if(_unit isKindOf "Helicopter") then
 	_unit disableTIEquipment true;
 };
 
-_unit addAction [ "Repair", Mh_fnc_repair, [], 1.5, true, true, "", "vehicle player == player && side player == west && (_target distance player) <= 5" ];
+
 
 if(isServer) then
 {
@@ -43,4 +44,18 @@ if(isServer) then
     {
         [_unit, west] call compile preprocessFileLineNumbers "initSpawnVehicle.sqf";
     };
+};
+
+if(hasInterface) then
+{
+    _unit addAction [ "Repair", Mh_fnc_repair, [], 1.5, true, true, "", 
+    "if(side group player != west || vehicle player != player) exitWith { false; };
+        private _result = false;
+        {
+            if(_x > 0.15) exitWith { _result = true; };
+
+        } forEach ((getAllHitPointsDamage _target) select 2);
+        _result;
+    ",
+    5];
 };
