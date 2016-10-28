@@ -9,7 +9,7 @@
 
 #define BLUFOR_BODIES "Once an OpFor is killed you can check their body for any information about the other operatives. Simply approach the body and use the ""Check body"" action, your map will be updated with the position of all other operatives in the moment of the killed one's death. Bodies might also be carrying intel that other operatives will want to collect, so it might be wise making sure you keep track of them."
 
-#define BLUFOR_ACTIONS "Your action menu contains two additional options: One are earplugs which might be useful when flying a helicopter. The other option is called ""Mark grid"", use it whenever you are pointing your crosshair at a target you want to report. A report will be made in chat and appropriate grid will be marked on the map."
+#define BLUFOR_ACTIONS "Your action menu contains three additional options: ""Earplugs in/out"" which might be useful when flying a helicopter.<br/>""Mark grid"", use it whenever you are pointing your crosshair at a target you want to report. A report will be made in chat and appropriate grid will be marked on the map.<br/>""Repair"", only available when next to a damaged vehicle. This will allow you to spend some time repairing it to full health."
 
 #define BLUFOR_FASTROPING "All helicopters allow for fast roping - simply have the pilot slow the chopper down to a hover, throw the ropes and then fast rope. The rope should be safe to use up to 45 meters above ground level, just make sure the helicopter maintains a steady hover during the whole process."
 
