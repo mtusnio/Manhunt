@@ -30,7 +30,7 @@ if(_unit isKindOf "Helicopter") then
 	_unit disableTIEquipment true;
 };
 
-_unit addAction [ "Repair", Mh_fnc_repair, [], 1.5, true, true, "", "vehicle player == player && side player == west && (_target distance player) <= 5" ];
+_unit addAction [ "Repair", Mh_fnc_repair, [], 1.5, true, true, "", "vehicle player == player && side player == west", 5];
 
 if(isServer) then
 {
