@@ -31,7 +31,7 @@ if(_unit isKindOf "Helicopter") then
 	_unit disableTIEquipment true;
 };
 
-_unit addAction [ "Repair", Mh_fnc_repair, [], 1.5, true, true, "", "vehicle player == player && side player == west", 5];
+
 
 if(isServer) then
 {
@@ -44,4 +44,18 @@ if(isServer) then
     {
         [_unit, west] call compile preprocessFileLineNumbers "initSpawnVehicle.sqf";
     };
+};
+
+if((!isServer || !isDedicated) && side group player == west) then
+{
+    _unit addAction [ "Repair", Mh_fnc_repair, [], 1.5, true, true, "", 
+    "if(vehicle player != player) exitWith { false; };
+        private _result = false;
+        {
+            if(_x > 0.15) exitWith { _result = true; };
+
+        } forEach ((getAllHitPointsDamage _target) select 2);
+        _result;
+    ",
+    5];
 };
