@@ -46,10 +46,10 @@ if(isServer) then
     };
 };
 
-if((!isServer || !isDedicated) && side group player == west) then
+if(hasInterface) then
 {
     _unit addAction [ "Repair", Mh_fnc_repair, [], 1.5, true, true, "", 
-    "if(vehicle player != player) exitWith { false; };
+    "if(side group player != west || vehicle player != player) exitWith { false; };
         private _result = false;
         {
             if(_x > 0.15) exitWith { _result = true; };
