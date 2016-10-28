@@ -4,7 +4,7 @@
 #define INFANTRY_VAR 20
 
 // Initial wait before drone tracking starts
-#define INITIAL_WAIT 300
+#define INITIAL_WAIT initialDroneDelay
 
 // Delay after drones are online and the first check is done
 #define MIN_FIRST_TRACKING_DELAY 10
