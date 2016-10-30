@@ -1,23 +1,26 @@
 /* ******************** Defines ***************** */
 
-#define INFANTRY_MIN_TIME 160
-#define INFANTRY_VAR 20
+#define INFANTRY_MIN_TIME 190
+#define INFANTRY_VAR 10
 
 // Initial wait before drone tracking starts
 #define INITIAL_WAIT initialDroneDelay
 
-// Delay after drones are online and the first check is done
-#define MIN_FIRST_TRACKING_DELAY 10
-#define RAND_FIRST_TRACKING_DELAY 10
+// Delay after drones are turned online and the first check is done
+#define MIN_FIRST_TRACKING_DELAY 5
+#define RAND_FIRST_TRACKING_DELAY 8
 
 #define MAX_CHANCE 100
 
 #define INFANTRY_CHANCE 20
 
 
-#define VEHICLE_MIN_TIME 20
+// This is the time when any manned vehicles will be captured & tracked
+#define VEHICLE_MIN_TIME 35
 #define VEHICLE_VAR 10
-#define VEHICLE_SWEETSPOT 20
+// The time when only old vehicles are being checked, and no new vehicles are being added to the list
+#define VEHICLE_SWEETSPOT 10
+
 #define ROAD_DISTANCE 8
 
 #define VEHICLE_MIN_CHANCE 30
@@ -28,7 +31,7 @@
 
 #define SPOT_COUNT_VAR "mh_drone_spotcount"
 #define SPOT_POSITION_VAR "mh_drone_spotposition"
-#define SPOT_DISTANCE 130
+#define SPOT_DISTANCE 100
 
 /* ******************** End defines ***************** */
 

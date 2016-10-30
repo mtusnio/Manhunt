@@ -39,7 +39,7 @@ class Params
 	{
 		title = "Infantry drone marker size"; // Param name visible in the list
 		values[] = {75, 150, 225, 275, 325, 375, 425}; // Values; must be integers; has to have the same number of elements as 'texts'
-		default = 325; // Default value; must be listed in 'values' array, otherwise 0 is used
+		default = 375; // Default value; must be listed in 'values' array, otherwise 0 is used
 	};
     
     class DroneMarkerSizeVehicle
