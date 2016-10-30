@@ -12,6 +12,12 @@ while { _run } do
     _aliveOpfor = { isPlayer _x && alive _x && side group _x == east } count allUnits;
     _playingBluFor = { isPlayer _x && side group _x == west } count (allUnits + allDead);
     
+    // Just in case someone joins blufor mid game
+    if(initialBluFor == 0 && _playingBluFor > 0) then
+    {
+        initialBluFor = _playingBluFor;
+    };
+
     if(initialOpfor > 0 && initialBlufor > 0) then
     {
         if(_aliveOpfor == 0) then
