@@ -15,10 +15,10 @@ if(isServer) then
     
     switch (startingTime) do 
     {
-        // Skip to an hour between 8 AM and 6 PM
-        case 1: { timeSkip = -4 + random 10; };
-        // Skip to an hour between 9 PM and 2 AM
-        case 2: { timeSkip = 9 + random 5; };
+        // Skip to an hour between 7 AM and 6 PM
+        case 1: { timeSkip = -5 + random 11; };
+        // Skip to an hour between 8 PM and 6 AM
+        case 2: { timeSkip = 8 + random 10; };
     };
     publicVariable "timeSkip";
     
