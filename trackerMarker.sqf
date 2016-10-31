@@ -1,15 +1,16 @@
 #define TIER2_SPREAD 10
 #define TIER3_SPREAD 20
 
-#define TIER2_MULTIPLIER 1.8
-#define TIER3_MULTIPLIER 2.3
+#define TIER2_MULTIPLIER 1.6
+#define TIER3_MULTIPLIER 2.5
 
 #define MARKER_STAYING_TIME 240
 
+#define WATER_RETRIES 20
+
 if(isNil "currentMarkers") then { currentMarkers = [ ]; };
 
-private["_calculateRadius"];
-_calculateRadius = {
+private _calculateRadius = {
     private["_rand"];
     _rand = _this select 0;
     
@@ -42,6 +43,24 @@ _calculateRadius = {
     _radius;
 };
 
+private _calculatePosition = {
+    params ["_target", "_radius"];
+    private _pos = position _target;
+    private _markerPos = [];
+    // Regardless if the player is in water or not we want to run some retries to make sure the marker ends up on the mainland
+    // This way, unless the target is out in the sea, the marker will always stay close to the coast giving less info regarding the position of the player
+    // Not an ideal solution, especially since it runs a retry per every fail, but it should be enough for now
+    for "_i" from 0 to WATER_RETRIES do
+    {
+        private _yDist = _radius - random ( _radius * 2);
+        private _maxX = sqrt ( _radius^2 - _yDist^2 );
+        private _xDist = _maxX - random (_maxX * 2);
+        
+        _markerPos =  [(_pos select 0) + _xDist,(_pos select 1) + _yDist, 0];
+        if(!surfaceIsWater _markerPos) exitWith { };
+    };
+    _markerPos;
+};
 
 private ["_target", "_radius", "_rand", "_chance"];
 _target = _this select 0;
@@ -54,22 +73,13 @@ _radius = [_rand, _chance, _radius] call _calculateRadius;
 
 if(_radius > 0) then
 {
-    private["_pos"];
-    _pos = position _target;
-
-    private ["_yDist", "_xDist", "_maxX"];
-    _yDist = _radius - random ( _radius * 2);
-    _maxX = sqrt ( _radius^2 - _yDist^2 );
-    _xDist = _maxX - random (_maxX * 2);
-
     private["_markerName", "_timerMarkerName"];
     _markerName = [droneTrackerMarkers] call BIS_fnc_arrayShift;
     droneTrackerMarkers pushBack _markerName;
     
     _timeMarkerName = _markerName + "_time";
 
-    private["_markerPos"];
-    _markerPos = [(_pos select 0) + _xDist,(_pos select 1) + _yDist, 0];
+    private _markerPos = [_target, _radius] call _calculatePosition;
 
     private ["_markerColor"];
     _markerColor = "ColorRed";

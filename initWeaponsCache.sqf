@@ -32,6 +32,7 @@ if(isServer) then
     _cache addMagazineCargoGlobal ["RPG32_F", 1];
     _cache addMagazineCargoGlobal ["150Rnd_762x54_Box", 1];
     _cache addMagazineCargoGlobal ["30Rnd_65x39_caseless_green", 3];
+    _cache addMagazineCargoGlobal ["30Rnd_556x45_Stanag", 2];
     _cache addMagazineCargoGlobal ["10Rnd_762x54_Mag", 3];
     _cache addMagazineCargoGlobal ["ATMine_Range_Mag", 1];
     _cache addMagazineCargoGlobal ["APERSMine_Range_Mag", 1];
