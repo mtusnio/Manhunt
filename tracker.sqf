@@ -1,6 +1,6 @@
 /* ******************** Defines ***************** */
 
-#define INFANTRY_MIN_TIME 190
+#define INFANTRY_MIN_TIME 175
 #define INFANTRY_VAR 10
 
 // Initial wait before drone tracking starts
@@ -31,7 +31,7 @@
 
 #define SPOT_COUNT_VAR "mh_drone_spotcount"
 #define SPOT_POSITION_VAR "mh_drone_spotposition"
-#define SPOT_DISTANCE 100
+#define SPOT_DISTANCE 115
 
 /* ******************** End defines ***************** */
 
