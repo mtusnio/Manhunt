@@ -24,20 +24,20 @@ if(isServer) then
         };
     };
 
-    clearMagazineCargoGlobal _cache; 
-    clearWeaponCargoGlobal _cache; 
-    clearItemCargoGlobal _cache; 
+    clearMagazineCargoGlobal _cache;
+    clearWeaponCargoGlobal _cache;
+    clearItemCargoGlobal _cache;
     clearBackpackCargoGlobal _cache;
 
     _cache addMagazineCargoGlobal ["RPG32_F", 1];
-    _cache addMagazineCargoGlobal ["150Rnd_762x54_Box", 1];
-    _cache addMagazineCargoGlobal ["30Rnd_65x39_caseless_green", 3];
-    _cache addMagazineCargoGlobal ["30Rnd_556x45_Stanag", 2];
-    _cache addMagazineCargoGlobal ["10Rnd_762x54_Mag", 3];
+    _cache addMagazineCargoGlobal ["150Rnd_762x54_Box", 2];
+    _cache addMagazineCargoGlobal ["30Rnd_65x39_caseless_green", 4];
+    _cache addMagazineCargoGlobal ["30Rnd_556x45_Stanag", 3];
+    _cache addMagazineCargoGlobal ["10Rnd_762x54_Mag", 4];
     _cache addMagazineCargoGlobal ["ATMine_Range_Mag", 1];
     _cache addMagazineCargoGlobal ["APERSMine_Range_Mag", 1];
     _cache addMagazineCargoGlobal ["SatchelCharge_Remote_Mag", 1];
-    _cache addItemCargoGlobal ["NVGoggles_OPFOR", 1];
+    _cache addItemCargoGlobal ["NVGoggles_OPFOR", 2];
     _cache addItemCargoGlobal ["HandGrenade", 2];
     _cache addItemCargoGlobal ["U_O_Wetsuit", 1];
     _cache addBackpackCargoGlobal ["B_FieldPack_khk", 1];
