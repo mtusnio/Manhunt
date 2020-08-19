@@ -1,3 +1,6 @@
+
+#define PARACHUTE_ALTITUDE 80
+
 call compile preProcessFileLineNumbers "initVariables.sqf";
 call compile preprocessFileLineNumbers "initBriefingChanges.sqf";
 
@@ -40,6 +43,12 @@ if(side player == east) then
                 }, [], 1, false, true, "", "alive _target && _this distance _target <= 3 && ([_this] call Mh_fnc_getIntelCount > 0);"]; 
         };
     } forEach (if (isMultiplayer) then {playableUnits} else {switchableUnits});
+
+    [] spawn {
+        waitUntil { getPosATL player select 2 < PARACHUTE_ALTITUDE };
+        player action ["openParachute"];
+    };
+
 }
 else
 {
