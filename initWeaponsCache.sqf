@@ -40,6 +40,7 @@ if(isServer) then
     _cache addItemCargoGlobal ["NVGoggles_OPFOR", 2];
     _cache addItemCargoGlobal ["HandGrenade", 2];
     _cache addItemCargoGlobal ["U_O_Wetsuit", 1];
+    _cache addItemCargoGlobal ["FirstAidKit", 2];
     _cache addBackpackCargoGlobal ["B_FieldPack_khk", 1];
 	_cache addWeaponCargoGlobal ["arifle_Katiba_F", 1]
 };
