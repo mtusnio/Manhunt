@@ -2,8 +2,8 @@
 #define EXTRACTION_RESPAWN 45
 
 if(isServer) then
-{ 
-    [[[East, "HQ"], "Copy that, extraction on the way"], "sideChat", east] call Bis_fnc_mp;
+{
+    [[[East, "HQ"], "Copy that, extraction on the way."], "sideChat", east] call Bis_fnc_mp;
     [[[West, "HQ"], "Enemy extraction started!"], "sideChat", west] call Bis_fnc_mp;
     
     sleep RESCUE_DELAY;

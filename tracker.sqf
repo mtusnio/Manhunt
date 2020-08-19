@@ -38,12 +38,14 @@
 
 droneTrackerMarkers = ["drone_marker_1", "drone_marker_2", "drone_marker_3", "drone_marker_4", "drone_marker_5", "drone_marker_6", "drone_marker_7", "drone_marker_8", "drone_marker_9", "drone_marker_10"];
 
-[[[west, "HQ"], format ["Drone are being configured and we will start monitoring the area in about %1 minutes.", round (INITIAL_WAIT/60)]], "sideChat", west] call Bis_fnc_mp;
-[[[east, "HQ"], "NATO is probably setting up their drone coverage in the region to find us, we'd better move fast."], "sideChat", east] call Bis_fnc_mp;
+private _timeUntilTracking = round (INITIAL_WAIT/60);
+
+[[[west, "HQ"], format ["Drone are being configured and we will start monitoring the area in about %1 minutes.", _timeUntilTracking]], "sideChat", west] call Bis_fnc_mp;
+[[[east, "HQ"], format [ "NATO drones are coming online and will be tracking your movements in about %1 minutes.", _timeUntilTracking ]], "sideChat", east] call Bis_fnc_mp;
 
 sleep INITIAL_WAIT;
 
-[[[west, "HQ"], "Drone coverage is now online."], "sideChat", west] call Bis_fnc_mp;
+[[[west, "HQ"], "Drone coverage is now online, first reports will be available momentarily."], "sideChat", west] call Bis_fnc_mp;
 [[[east, "HQ"], "Be advised, we are receiving information that drone coverage is being turned online."], "sideChat", east] call Bis_fnc_mp;
 
 sleep  (MIN_FIRST_TRACKING_DELAY + (random RAND_FIRST_TRACKING_DELAY));
