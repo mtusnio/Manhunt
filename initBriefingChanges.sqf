@@ -19,7 +19,7 @@
 
 #define OPFOR_DRONES "BluFor will eventually get high altitude drone coverage of the region. Periodically it will feed the enemy team info about your approximate location. Your best chance of avoiding it is to limit the usage of vehicles and move quickly when on foot, do not stick around one area for too long or your location will get more and more accurate. If you do have to make use of a vehicle avoid staying close to roads, drones have harder time tracking you off road."
 
-#define OPFOR_AMMOCACHES "There are three ammo caches for you to find: one in <marker name=""girna_cache"">Girna</marker>, the other one is deployed <marker name=""random_cache"">somewhere up north</marker>, and finally there's one in <marker name=""forest_cache"">the forest</marker>. They will contain ammo, weapons and various utilities for you. Those locations are random and BluFor is not aware of the exact location of those caches, only their general wherabouts."
+#define OPFOR_AMMOCACHES "There are four ammo caches for you to find: one in <marker name=""girna_cache"">Girna</marker>, the other one is deployed in a building <marker name=""random_cache"">somewhere up north</marker>, one more has been placed in north eastern <marker name=""forest_cache"">forests</marker> and one was parachuted in <marker name=""forest_cache"">central Stratis</marker>. They will contain ammo, weapons and various utilities for you. Those locations are random and BluFor is not aware of the exact location of those caches, only their general wherabouts."
 
 #define OPFOR_EXTRACTION "Once enough intel to win is present in the wider circle of the <marker name=""extraction_zone"">this zone</marker>, and at least one person in the green zone, extraction will start. Hide until your rescue shows up, the Taru will bring armed friends. Board it as soon as possible - it doesn't matter who's in it at the end, as long as the sum of passengers' carried intel matches the mission requirement. The helicopter will not wait forever, however you are invulnerable while inside it and you can still provide covering fire!"
 
@@ -47,13 +47,13 @@ if(side group player == west) then
         };
         _x setMarkerColorLocal "ColorWEST";
     } forEach _bluMarkers;
-    
+
     {
         _x setMarkerColorLocal "ColorEAST";
     } forEach _opforMarkers;
-    
+
     private ["_removeBlufor"];
-    _removeBlufor = [ "random_cache", "forest_cache" ];
+    _removeBlufor = [ "random_cache", "forest_cache", "valley_cache" ];
     {
         deleteMarkerLocal _x;
     } forEach _removeBlufor;
@@ -63,7 +63,8 @@ else
     "girna_cache" setMarkerPosLocal (getPos (missionNamespace getVariable ["cache1", objNull]));
     "random_cache" setMarkerPosLocal (getPos (missionNamespace getVariable ["cache2", objNull]));
     "forest_cache" setMarkerPosLocal (getPos (missionNamespace getVariable ["cache3", objNull]));
-        
+    "valley_cache" setMarkerPosLocal (getPos (missionNamespace getVariable ["cache4", objNull]));
+
     private ["_removeOpfor"];
     _removeOpfor = [ "airbase_fuel", "airfield_boats", "airfield_fuel", "airbase_uav" ];
     {
