@@ -10,7 +10,6 @@ if(isMultiplayer) then {
 	nameTags = paramsArray select 7;
 	requiredIntel = paramsArray select 8;
 	//startingWeather = paramsArray select 9;
-	debugMode = paramsArray select 10;
 
 	disallowTeamswitch = paramsArray select 11;
 	acceleratedTime = paramsArray select 12;
@@ -29,7 +28,6 @@ if(isMultiplayer) then {
 	nameTags = 2;
 	requiredIntel = 3;
 	//startingWeather = paramsArray select 9;
-	debugMode = 1;
 
 	disallowTeamswitch = 1;
 	acceleratedTime = 1;

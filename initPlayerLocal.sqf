@@ -55,7 +55,7 @@ else
     setPlayerRespawnTime respawnTime;
 };
 
-if(debugMode == 1) then
+if(call Mh_fnc_isDebug) then
 {
     setPlayerRespawnTime 5;
     ["debugTeleport", "onMapSingleClick", {

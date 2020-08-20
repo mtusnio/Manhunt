@@ -1,6 +1,6 @@
 params ["_unit"];
 
-if(debugMode == 1) then {
+if(call Mh_fnc_isDebug) then {
 	_unit addEventHandler ["HandleDamage", {
 		private _v = _this select 0;
 		if (!alive _v) then {

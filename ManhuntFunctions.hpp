@@ -28,36 +28,42 @@ class CfgFunctions
             class repair { };
             class repairPart { };
         };
-        
-        
+
+
         class Units
         {
             file = "manhunt_fnc";
             class getSideUnits {};
         };
-        
+
         class Map
         {
             file = "manhunt_fnc";
             class createMarker { };
         };
-        
+
         class Tasks
         {
             file = "manhunt_fnc";
             class removeAllTasks { };
         };
-        
+
         class Building
         {
             file = "manhunt_fnc";
             class findRandomBuildingPosition { };
         };
-        
+
         class UI
         {
             file = "manhunt_fnc";
             class updateUI { };
+        };
+
+        class Debug
+        {
+            file = "manhunt_fnc";
+            class isDebug { };
         };
 	};
 };
