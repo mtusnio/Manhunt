@@ -12,7 +12,7 @@ class CfgFunctions
         class Intel
         {
             file = "manhunt_fnc";
-            
+
             class getIntelCount { };
             class changeIntelCount { };
             class clearIntelCount { };
@@ -20,7 +20,7 @@ class CfgFunctions
             class giveIntelCount { };
             class getIntelCountInRadius { };
         };
-        
+
         class Actions
         {
             file = "manhunt_fnc";

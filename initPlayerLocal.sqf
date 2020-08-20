@@ -36,11 +36,11 @@ if(side player == east) then
         if(side _x == east && _x != player) then
         {
             _x addAction [format["Give %1 an intel piece", name _x], {
-            
+
                     [[_this select 1, _this select 0, 1], "Mh_fnc_giveIntelCount", false] call Bis_fnc_mp;
                     [[_this select 0, format ["Received an intel piece from %1", name (_this select 1)]], "sideChat", east] call BIS_fnc_MP;
-                    
-                }, [], 1, false, true, "", "alive _target && _this distance _target <= 3 && ([_this] call Mh_fnc_getIntelCount > 0);"]; 
+
+                }, [], 1, false, true, "", "alive _target && _this distance _target <= 3 && ([_this] call Mh_fnc_getIntelCount > 0);"];
         };
     } forEach (if (isMultiplayer) then {playableUnits} else {switchableUnits});
 
