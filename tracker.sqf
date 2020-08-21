@@ -38,12 +38,14 @@
 
 droneTrackerMarkers = ["drone_marker_1", "drone_marker_2", "drone_marker_3", "drone_marker_4", "drone_marker_5", "drone_marker_6", "drone_marker_7", "drone_marker_8", "drone_marker_9", "drone_marker_10"];
 
-[[[west, "HQ"], format ["Drone are being configured and we will start monitoring the area in about %1 minutes.", round (INITIAL_WAIT/60)]], "sideChat", west] call Bis_fnc_mp;
-[[[east, "HQ"], "NATO is probably setting up their drone coverage in the region to find us, we'd better move fast."], "sideChat", east] call Bis_fnc_mp;
+private _timeUntilTracking = round (INITIAL_WAIT/60);
+
+[[[west, "HQ"], format ["Drone are being configured and we will start monitoring the area in about %1 minutes.", _timeUntilTracking]], "sideChat", west] call Bis_fnc_mp;
+[[[east, "HQ"], format [ "NATO drones are coming online and will be tracking your movements in about %1 minutes.", _timeUntilTracking ]], "sideChat", east] call Bis_fnc_mp;
 
 sleep INITIAL_WAIT;
 
-[[[west, "HQ"], "Drone coverage is now online."], "sideChat", west] call Bis_fnc_mp;
+[[[west, "HQ"], "Drone coverage is now online, first reports will be available momentarily."], "sideChat", west] call Bis_fnc_mp;
 [[[east, "HQ"], "Be advised, we are receiving information that drone coverage is being turned online."], "sideChat", east] call Bis_fnc_mp;
 
 sleep  (MIN_FIRST_TRACKING_DELAY + (random RAND_FIRST_TRACKING_DELAY));
@@ -62,10 +64,10 @@ nextVehicleCheckUnits = [ ];
     {
         private["_detected"];
         _detected = false;
-        
+
         private["_units"];
         _units = [east, { private["_pl"]; _pl = _this select 0; alive _pl && (vehicle _pl == _pl); }] call Mh_fnc_getSideUnits;
-        
+
         //diag_log (format ["Infantry check started for %1", _units]);
         private ["_chance"];
         _chance = INFANTRY_CHANCE;
@@ -73,11 +75,11 @@ nextVehicleCheckUnits = [ ];
             private ["_spotCount", "_spotPosition"];
             _spotCount = _x getVariable [SPOT_COUNT_VAR, 0];
             _spotPosition = _x getVariable [SPOT_POSITION_VAR, [0,0,0]];
-            
+
             private ["_rand"];
             _rand = floor random (MAX_CHANCE + 1);
             //diag_log format ["Checking %1 with random %2 and chance %3", name _x, _rand, _chance];
-            
+
             private["_trackerRet"];
             _trackerRet = [_x, detectionRadius / (2 ^ _spotCount), _rand, _chance + _spotCount * (MAX_CHANCE - _chance)] call _trackerMarker;
             if(_trackerRet select 0) then
@@ -103,11 +105,11 @@ nextVehicleCheckUnits = [ ];
                 _x setVariable [SPOT_COUNT_VAR, 0];
             };
         } forEach _units;
-        
+
         private["_sleep"];
         _sleep = INFANTRY_MIN_TIME + (random INFANTRY_VAR);
         //diag_log format ["Drones sleeping: %1", _sleep];
-        
+
         if(!_detected) then
         {
             [[[West, "HQ"], "Drone operators report no hostiles."], "sideChat", west] call Bis_fnc_mp;
@@ -132,15 +134,15 @@ nextVehicleCheckUnits = [ ];
         _vehicleCheck = {
             private ["_veh"];
             _veh = _this select 0;
-            
+
             private["_speed", "_roadChecks", "_totalChecks"];
             _speed = _veh getVariable ["mh_drone_sumspeed", 0];
             _roadChecks = _veh getVariable ["mh_drone_roadchecks", 0];
             _totalChecks = _veh getVariable ["mh_drone_totalchecks", 0];
-            
+
             _veh setVariable ["mh_drone_sumspeed", _speed + (abs (speed _veh))];
             _veh setVariable ["mh_drone_totalchecks", _totalChecks + 1];
-            
+
             private["_road"];
             _road = [getPos _veh, ROAD_DISTANCE, []] call BIS_fnc_nearestRoad;
             if(!(isNull _road) || (isOnRoad getPosATL _veh)) then
@@ -148,30 +150,30 @@ nextVehicleCheckUnits = [ ];
                 _veh setVariable ["mh_drone_roadchecks", _roadChecks + 1];
             };
         };
-    
+
         private["_oldVehicles"];
         _oldVehicles = _this select 0;
-        
+
         private ["_units"];
         _units = [east, { private["_pl"]; _pl = _this select 0; alive _pl && vehicle _pl != _pl; }] call Mh_fnc_getSideUnits;
-        
+
         {
             private ["_vh"];
             _vh = vehicle _x;
-         
-            
+
+
             if(!(_vh in _oldVehicles) && !(_vh in nextVehicleCheckUnits)) then
             {
                 nextVehicleCheckUnits pushBack _vh;
             };
-           
-            
-            
+
+
+
         } forEach _units;
-        
+
         private["_vehicles"];
         _vehicles = nextVehicleCheckUnits + _oldVehicles;
-        
+
         if(count _vehicles > 0) then
         {
             //diag_log format ["Vehicle check on %1", _vehicles];
@@ -180,27 +182,27 @@ nextVehicleCheckUnits = [ ];
             } forEach _vehicles;
         };
     };
-    
 
-        
+
+
     private ["_counter", "_sleepTime"];
     _sleepTime = 2.5;
     while {true} do
-    {   
+    {
         //diag_log "New vehicle check launched";
         _counter = floor ((VEHICLE_MIN_TIME + random VEHICLE_VAR)/_sleepTime);
-    
+
         private["_i"];
         for "_i" from 0 to _counter do
         {
             [[]] call _checkAllVehicles;
             sleep _sleepTime;
         };
-                
+
         private ["_oldVehicles"];
         _oldVehicles = nextVehicleCheckUnits;
         nextVehicleCheckUnits = [ ];
-        
+
         //diag_log "Sweetspot enabled";
         _counter = floor (VEHICLE_SWEETSPOT/_sleepTime);
         for "_i" from 0 to _counter do
@@ -208,14 +210,14 @@ nextVehicleCheckUnits = [ ];
             [_oldVehicles] call _checkAllVehicles;
             sleep _sleepTime;
         };
-        
-        // Mark vehicles here        
+
+        // Mark vehicles here
         // Calculate chance & markers
         //diag_log "Marking vehicles";
         private ["_detected"];
         _detected = false;
         {
-            
+
             if(isNull _x) then
             {
                 diag_log "Attempted a check on null";
@@ -233,18 +235,18 @@ nextVehicleCheckUnits = [ ];
                     private["_avgSpeed", "_checksPerc"];
                     _avgSpeed = (_x getVariable["mh_drone_sumspeed", 0]) / _totalChecks;
                     _checksPerc = (_x getVariable["mh_drone_roadchecks", 0]) / _totalChecks;
-                    
+
                     //diag_log (format["Executing a check for: Total Checks - %1 AvgSpeed - %2 ChecksPerc - %3", _totalChecks, _avgSpeed, _checksPerc]);
                     private["_chance"];
                     _chance = VEHICLE_MIN_CHANCE + _avgSpeed * VEHICLE_SPEED_CHANCE_MULT + VEHICLE_ROAD_CHANCE * _checksPerc;
-                    
+
                     private["_rand"];
                     _rand = floor (random MAX_CHANCE);
                     //diag_log (format["Chance is %1, randomed %2", _chance, _rand]);
-                    
+
                     private["_trackerRet"];
                     _trackerRet = [_x, detectionRadiusVehicle, _rand, _chance] call _trackerMarker;
-                    
+
                     if(_trackerRet select 0) then
                     {
                         private ["_vehType"];
@@ -257,15 +259,15 @@ nextVehicleCheckUnits = [ ];
                         [[[West, "HQ"], format ["%1 vehicle spotted at grid %2.", _vehType, mapGridPosition (_trackerRet select 1)] ], "sideChat", west] call Bis_fnc_mp;
                         sleep 2;
                     };
-                    
-                
+
+
                     _x setVariable ["mh_drone_sumspeed", 0];
                     _x setVariable ["mh_drone_roadchecks", 0];
                     _x setVariable ["mh_drone_totalchecks", 0];
                 };
             };
         } forEach _oldVehicles;
-        
+
         if(!_detected) then
         {
             [[[West, "HQ"], "No vehicle activity spotted."], "sideChat", west] call Bis_fnc_mp;

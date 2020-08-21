@@ -2,18 +2,22 @@ call compile preProcessFileLineNumbers "initVariables.sqf";
 
 enableSaving [ false, false ];
 
+if(call Mh_fnc_isDebug) then {
+    systemChat "Debug mode is enabled";
+};
+
 if(isServer) then
 {
     // All assumptions here are that the game starting time is noon
     timeSkip = random 24;
-    
+
     // Eliminate dark night time (4-6 AM)
     if(timeSkip >= 16 && timeSkip <= 18) then
     {
         timeSkip = timeSkip + 2;
     };
-    
-    switch (startingTime) do 
+
+    switch (startingTime) do
     {
         // Skip to an hour between 7 AM and 6 PM
         case 1: { timeSkip = -5 + random 11; };
@@ -21,7 +25,7 @@ if(isServer) then
         case 2: { timeSkip = 8 + random 10; };
     };
     publicVariable "timeSkip";
-    
+
     setTimeMultiplier acceleratedTime;
 };
 

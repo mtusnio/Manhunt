@@ -7,7 +7,7 @@
 
 #define BLUFOR_DRONES "High altitude drone coverage will be made available shortly after the mission start. It will be able to provide roughly the location of any footsoldiers, and its accuracy will increase if they keep sticking around the same area. If OpFor uses vehicles the drones will not only more easily catch them, especially if they stick to roads, but it will have a chance of providing intel about any abandoned cars. There is no guarantee that every drone check will succeed in finding anything though, but it should provide enough clues to help you track down any hostiles."
 
-#define BLUFOR_BODIES "Once an OpFor is killed you can check their body for any information about the other operatives. Simply approach the body and use the ""Check body"" action, your map will be updated with the position of all other operatives in the moment of the killed one's death. Bodies might also be carrying intel that other operatives will want to collect, so it might be wise making sure you keep track of them."
+#define BLUFOR_BODIES "Once an OpFor is killed you can check their body for any information about the other operatives. Simply approach the body and use the ""Check body"" action, your map will be updated with the position of all other operatives' position at the time of their teammate's death. Bodies might also be carrying intel that other operatives will want to collect, so it might be wise making sure you keep track of them."
 
 #define BLUFOR_ACTIONS "Your action menu contains three additional options: ""Earplugs in/out"" which might be useful when flying a helicopter.<br/>""Mark grid"", use it whenever you are pointing your crosshair at a target you want to report. A report will be made in chat and appropriate grid will be marked on the map.<br/>""Repair"", only available when next to a damaged vehicle. This will allow you to spend some time repairing it to full health."
 
@@ -17,13 +17,13 @@
 
 #define OPFOR_INTEL "Intel is what you came here for, you need the specified amount of it to be carried by players in the extraction helicopter to win. It does not matter who lives, only how much intel is carried off the island. You can share it with another player, if you are close enough, and take it from friendly bodies. Make sure one player does not hoard all of it, and remember you can accomplish more objectives than the minimum if you want to. Finally, BluFor can not take intel from your dead friendlies, however they can search the body to recover information about your position at the time of the teammate's death!"
 
-#define OPFOR_DRONES "BluFor will eventually get high altitude drone coverage of the region. Periodically it will feed the enemy team info about your possible location. Your best chance of avoiding it is to limit the usage of vehicles and move quickly when on foot, do not stick around one area for too long. A single small UAV is also at NATO's disposal, however it does not have any thermal cameras on it."
+#define OPFOR_DRONES "BluFor will eventually get high altitude drone coverage of the region. Periodically it will feed the enemy team info about your approximate location. Your best chance of avoiding it is to limit the usage of vehicles and move quickly when on foot, do not stick around one area for too long or your location will get more and more accurate. If you do have to make use of a vehicle avoid staying close to roads, drones have harder time tracking you off road."
 
-#define OPFOR_AMMOCACHES "There are three ammo caches for you to find: one in <marker name=""girna_cache"">Girna</marker>, the other one is deployed <marker name=""random_cache"">somewhere up north</marker>, and finally there's one in <marker name=""forest_cache"">the forest</marker>. They will contain ammo, weapons and various utilities for you. Those locations are random and BluFor is not aware of the exact location of those caches, only their general wherabouts."
+#define OPFOR_AMMOCACHES "There are four ammo caches for you to find: one in <marker name=""girna_cache"">Girna</marker>, the other one is deployed in a building <marker name=""random_cache"">somewhere up north</marker>, one more has been placed in north eastern <marker name=""forest_cache"">forests</marker> and one was parachuted in <marker name=""forest_cache"">central Stratis</marker>. They will contain ammo, weapons and various utilities for you. Those locations are random and BluFor is not aware of the exact location of those caches, only their general wherabouts."
 
 #define OPFOR_EXTRACTION "Once enough intel to win is present in the wider circle of the <marker name=""extraction_zone"">this zone</marker>, and at least one person in the green zone, extraction will start. Hide until your rescue shows up, the Taru will bring armed friends. Board it as soon as possible - it doesn't matter who's in it at the end, as long as the sum of passengers' carried intel matches the mission requirement. The helicopter will not wait forever, however you are invulnerable while inside it and you can still provide covering fire!"
 
-#define OPFOR_ENEMYASSETS "BluFor will track you down using following assets:<br/>- Striders and Hunters with thermal cameras, Hunter turrets cannot fire<br/>- Hunters with no turrets<br/>- Maximum of one UAV without any thermal capabilities<br/>- Hummingbirds<br/>- A Hellcat, the camera only has night vision mode available<br/>- Mortar tubes, however with no artillery computer<br/>- Speedboats, only the minigun is capable of engaging<br/>All BluFor vehicles act as respawn points if any BluFor players are within 20 meters of them"
+#define OPFOR_ENEMYASSETS "BluFor will track you down using following assets:<br/>- Striders and Hunters equipped with thermal cameras, but no functioning weapons<br/>- Maximum of one UAV without any thermal capabilities<br/>- Hummingbirds<br/>- A Hellcat, the camera only has night vision mode available<br/>- Mortar tubes, however with no artillery computer<br/>- Speedboats, only the minigun is capable of engaging<br/>All BluFor vehicles act as respawn points if any BluFor players are within 20 meters of them"
 
 #define SETTINGS_STRING "Objectives needed for extraction: %1<br/>Amount of objectives available at start: %2<br/>Intel required to win: %3"
 
@@ -47,13 +47,13 @@ if(side group player == west) then
         };
         _x setMarkerColorLocal "ColorWEST";
     } forEach _bluMarkers;
-    
+
     {
         _x setMarkerColorLocal "ColorEAST";
     } forEach _opforMarkers;
-    
+
     private ["_removeBlufor"];
-    _removeBlufor = [ "random_cache", "forest_cache" ];
+    _removeBlufor = [ "random_cache", "forest_cache", "valley_cache" ];
     {
         deleteMarkerLocal _x;
     } forEach _removeBlufor;
@@ -63,7 +63,8 @@ else
     "girna_cache" setMarkerPosLocal (getPos (missionNamespace getVariable ["cache1", objNull]));
     "random_cache" setMarkerPosLocal (getPos (missionNamespace getVariable ["cache2", objNull]));
     "forest_cache" setMarkerPosLocal (getPos (missionNamespace getVariable ["cache3", objNull]));
-        
+    "valley_cache" setMarkerPosLocal (getPos (missionNamespace getVariable ["cache4", objNull]));
+
     private ["_removeOpfor"];
     _removeOpfor = [ "airbase_fuel", "airfield_boats", "airfield_fuel", "airbase_uav" ];
     {
