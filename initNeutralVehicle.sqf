@@ -14,4 +14,8 @@ if(call Mh_fnc_isDebug) then {
 			_v removeAllEventHandlers "HandleDamage";
 		};
 	}];
-}
+};
+
+clearMagazineCargoGlobal _unit;
+clearWeaponCargoGlobal _unit;
+clearItemCargoGlobal _unit;
